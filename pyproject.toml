@@ -1,0 +1,17 @@
+[project]
+name = "uv-python-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "boto3>=1.40.4",
+    "dask>=2025.7.0",
+    "fsspec[s3]>=2025.7.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.5",
+    "numpy>=2.3.2",
+    "requests>=2.32.4",
+    "tqdm>=4.67.1",
+    "zarr<3",
+]
