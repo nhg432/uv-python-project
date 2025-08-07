@@ -6,6 +6,7 @@ This file has helpful code snippets, for re-use.
 
 * hold `ctrl` when using arrows to skip over entire words instead of single letters. Hold `^` (aka `shift`) to highlight.
 * press up (and down) arrows, in the terminal or console, to return to previous commands that you've executed.
+* `ctrl` z to exit python mode
 
 ## OpenOrganelle Data Downloader
 
