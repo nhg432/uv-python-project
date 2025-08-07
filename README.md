@@ -14,6 +14,7 @@ This project provides tools for exploring and downloading cellular imaging data 
 
 Open and run the interactive notebook:
 ```bash
+.venv\Scripts\activate
 jupyter notebook openorganelle_explorer.ipynb
 ```
 
