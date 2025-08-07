@@ -52,41 +52,47 @@ def main():
     if metadata_file:
         print(f"   Metadata saved to: {metadata_file}")
     
-    # Download a small sample of EM data
-    print(f"\n4. Downloading a sample of EM data...")
-    try:
-        # Try to download EM data
-        sample_file = downloader.download_array_slice(
-            target_dataset, 
-            'em/fibsem-uint16/s0',  # Full resolution EM data
-            slice_spec=(slice(0, 32), slice(0, 32), slice(0, 32))  # Small 32x32x32 cube
-        )
-        if sample_file:
-            print(f"   Sample EM data saved to: {sample_file}")
-    except Exception as e:
-        print(f"   Could not download EM data: {e}")
-        
-        # Try alternative paths
-        print("   Trying alternative data paths...")
-        data_types = downloader.list_data_types(target_dataset)
-        for data_type in data_types[:3]:  # Try first 3 data types
-            try:
-                # Get arrays in this data type
-                info = downloader.get_dataset_info(target_dataset)
-                arrays = info.get(f'{data_type}_arrays', [])
-                if arrays:
-                    array_path = f"{data_type}/{arrays[0]}"
-                    print(f"   Trying: {array_path}")
-                    sample_file = downloader.download_array_slice(
-                        target_dataset, 
-                        array_path,
-                        slice_spec=(slice(0, 16), slice(0, 16), slice(0, 16))  # Even smaller sample
-                    )
-                    if sample_file:
-                        print(f"   Sample data saved to: {sample_file}")
-                        break
-            except Exception as e2:
-                print(f"   Failed {array_path}: {e2}")
+    # Download sample data using known working paths
+    print(f"\n4. Downloading sample data...")
+    
+    # List of known working data paths for different datasets
+    data_paths_to_try = [
+        'labels/mito_seg/s0',      # Mitochondria segmentation (verified working)
+        'labels/er_seg/s0',        # ER segmentation
+        'labels/nucleus_seg/s0',   # Nucleus segmentation  
+        'em/fibsem-uint16/s0',     # Raw EM data
+        'em/fibsem-uint8/s0',      # Raw EM data (8-bit)
+    ]
+    
+    sample_downloaded = False
+    for data_path in data_paths_to_try:
+        print(f"   Trying data path: {data_path}")
+        try:
+            sample_file = downloader.download_array_slice(
+                target_dataset, 
+                data_path,
+                slice_spec=(slice(0, 32), slice(512, 544), slice(10752, 10784))  # Known good coordinates
+            )
+            if sample_file:
+                print(f"   ✅ Sample data saved to: {sample_file}")
+                
+                # Show basic info about the downloaded data
+                import numpy as np
+                data = np.load(sample_file)
+                unique_vals = len(np.unique(data))
+                print(f"   📊 Shape: {data.shape}, Unique values: {unique_vals}")
+                if unique_vals > 1:
+                    print(f"   🎉 Contains real data (not just zeros)!")
+                
+                sample_downloaded = True
+                break
+                
+        except Exception as e:
+            print(f"   ❌ Failed: {str(e)[:100]}...")
+            continue
+    
+    if not sample_downloaded:
+        print("   ❌ Could not download any sample data. Dataset might have different structure.")
     
     print(f"\n=== Download Complete ===")
     print(f"Check the './data' directory for downloaded files.")
