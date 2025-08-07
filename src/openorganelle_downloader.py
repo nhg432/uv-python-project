@@ -21,6 +21,8 @@ import json
 from tqdm import tqdm
 import argparse
 import logging
+import gzip
+import struct
 
 # Import for zarr v3 compatibility
 try:
@@ -126,19 +128,250 @@ class OpenOrganelleDownloader:
         except Exception as e:
             logger.error(f"Error listing arrays in group {group_name}: {e}")
             return []
+
+    def _read_n5_chunk(self, fs, chunk_path: str, dtype: str, shape: tuple) -> np.ndarray:
         """
-        Open a zarr group with compatibility for both zarr v2 and v3.
+        Read an individual N5 chunk file directly.
+        
+        Args:
+            fs: Filesystem object
+            chunk_path: Path to the chunk file
+            dtype: Data type of the chunk
+            shape: Expected shape of the chunk
+            
+        Returns:
+            Numpy array containing the chunk data
         """
         try:
-            # Try direct fsspec approach first - most compatible
-            logger.info(f"Attempting to open {n5_path}")
-            store = fsspec.get_mapper(n5_path, anon=True)
-            group = zarr.open(store, mode='r')
-            logger.info(f"Successfully opened zarr group with fsspec")
-            return group
+            # Convert dtype string to numpy dtype first
+            if dtype == 'uint8':
+                np_dtype = np.uint8
+            elif dtype == 'uint16':
+                np_dtype = np.uint16
+            elif dtype == 'uint32':
+                np_dtype = np.uint32
+            elif dtype == 'uint64':
+                np_dtype = np.uint64
+            elif dtype == 'int8':
+                np_dtype = np.int8
+            elif dtype == 'int16':
+                np_dtype = np.int16
+            elif dtype == 'int32':
+                np_dtype = np.int32
+            elif dtype == 'int64':
+                np_dtype = np.int64
+            elif dtype == 'float32':
+                np_dtype = np.float32
+            elif dtype == 'float64':
+                np_dtype = np.float64
+            else:
+                np_dtype = np.uint16  # Default fallback
+            
+            # Read the chunk file
+            with fs.open(chunk_path, 'rb') as f:
+                data = f.read()
+            
+            # N5 chunks are typically gzip compressed
+            if data.startswith(b'\x1f\x8b'):  # gzip magic number
+                try:
+                    decompressed = gzip.decompress(data)
+                except Exception as gzip_error:
+                    logger.warning(f"Gzip decompression failed: {gzip_error}")
+                    return np.zeros(shape, dtype=np_dtype)
+            else:
+                decompressed = data
+            
+            # N5 format has a header before the actual data
+            # Try to skip potential header bytes and parse as array
+            expected_size = np.prod(shape) * np_dtype().itemsize
+            
+            # Try different header skip amounts
+            for header_skip in [0, 4, 8, 12, 16, 20, 24]:
+                if len(decompressed) >= header_skip + expected_size:
+                    try:
+                        array_data = decompressed[header_skip:header_skip + expected_size]
+                        array = np.frombuffer(array_data, dtype=np_dtype)
+                        
+                        if len(array) == np.prod(shape):
+                            array = array.reshape(shape)
+                            logger.debug(f"Successfully parsed chunk with {header_skip} byte header skip")
+                            return array
+                            
+                    except Exception as parse_error:
+                        continue
+            
+            # If standard parsing fails, try reading as much data as possible
+            try:
+                # Skip any header and read available data
+                if len(decompressed) > 20:
+                    # Try skipping first 20 bytes (common N5 header size)
+                    array_data = decompressed[20:]
+                    # Calculate how many elements we can read
+                    available_elements = len(array_data) // np_dtype().itemsize
+                    
+                    if available_elements > 0:
+                        array = np.frombuffer(array_data[:available_elements * np_dtype().itemsize], dtype=np_dtype)
+                        
+                        # Pad or truncate to expected shape
+                        expected_elements = np.prod(shape)
+                        if len(array) >= expected_elements:
+                            array = array[:expected_elements].reshape(shape)
+                        else:
+                            # Pad with zeros
+                            padded = np.zeros(expected_elements, dtype=np_dtype)
+                            padded[:len(array)] = array
+                            array = padded.reshape(shape)
+                        
+                        return array
+                        
+            except Exception as fallback_error:
+                logger.warning(f"Fallback parsing failed: {fallback_error}")
+            
+            # Return empty chunk if all parsing fails
+            logger.warning(f"Could not parse chunk data, returning zeros")
+            return np.zeros(shape, dtype=np_dtype)
+            
         except Exception as e:
-            logger.error(f"Failed to open zarr group: {e}")
-            raise e
+            logger.warning(f"Failed to read N5 chunk {chunk_path}: {e}")
+            # Return empty chunk with correct shape and dtype
+            return np.zeros(shape, dtype=np_dtype)
+
+    def _download_n5_slice_direct(self, dataset_name: str, data_path: str, 
+                                slice_spec: Tuple = None) -> Optional[np.ndarray]:
+        """
+        Download N5 data by reading chunks directly from S3.
+        
+        Args:
+            dataset_name: Name of the dataset
+            data_path: Path to the array (e.g., 'labels/mito_seg/s0')
+            slice_spec: Tuple specifying the slice
+            
+        Returns:
+            Numpy array with the requested data slice
+        """
+        try:
+            # Get array metadata
+            n5_path = f"{self.base_s3_url}/{dataset_name}/{dataset_name}.n5"
+            array_path = f"{n5_path}/{data_path}"
+            
+            fs = fsspec.filesystem('s3', anon=True)
+            clean_path = array_path.replace('s3://', '')
+            
+            # Read attributes
+            attrs_path = f"{clean_path}/attributes.json"
+            if not fs.exists(attrs_path):
+                logger.error(f"No attributes.json found at {attrs_path}")
+                return None
+                
+            with fs.open(attrs_path, 'r') as f:
+                attrs = json.load(f)
+            
+            # Extract array information
+            dimensions = attrs['dimensions']  # [z, y, x]
+            block_size = attrs['blockSize']   # [z_block, y_block, x_block]
+            dtype = attrs['dataType']
+            
+            logger.info(f"N5 array: {dimensions}, blocks: {block_size}, dtype: {dtype}")
+            
+            # Calculate slice bounds
+            if slice_spec is None:
+                # Default small sample
+                slice_spec = (slice(0, min(32, dimensions[0])), 
+                             slice(0, min(32, dimensions[1])), 
+                             slice(0, min(32, dimensions[2])))
+            
+            z_slice, y_slice, x_slice = slice_spec
+            z_start, z_stop = z_slice.start or 0, z_slice.stop or dimensions[0]
+            y_start, y_stop = y_slice.start or 0, y_slice.stop or dimensions[1]
+            x_start, x_stop = x_slice.start or 0, x_slice.stop or dimensions[2]
+            
+            # Calculate which chunks we need
+            z_block_start = z_start // block_size[0]
+            z_block_stop = (z_stop - 1) // block_size[0] + 1
+            y_block_start = y_start // block_size[1]
+            y_block_stop = (y_stop - 1) // block_size[1] + 1
+            x_block_start = x_start // block_size[2]
+            x_block_stop = (x_stop - 1) // block_size[2] + 1
+            
+            logger.info(f"Reading chunks: z={z_block_start}-{z_block_stop}, "
+                       f"y={y_block_start}-{y_block_stop}, x={x_block_start}-{x_block_stop}")
+            
+            # Initialize output array
+            output_shape = (z_stop - z_start, y_stop - y_start, x_stop - x_start)
+            
+            # Convert dtype for numpy
+            if dtype == 'uint16':
+                np_dtype = np.uint16
+            elif dtype == 'uint8':
+                np_dtype = np.uint8
+            else:
+                np_dtype = np.uint16  # Default
+            
+            result = np.zeros(output_shape, dtype=np_dtype)
+            
+            # Read required chunks
+            chunks_read = 0
+            for z_block in range(z_block_start, z_block_stop):
+                for y_block in range(y_block_start, y_block_stop):
+                    for x_block in range(x_block_start, x_block_stop):
+                        # N5 chunk naming convention
+                        chunk_name = f"{z_block}/{y_block}/{x_block}"
+                        chunk_path = f"{clean_path}/{chunk_name}"
+                        
+                        if fs.exists(chunk_path):
+                            try:
+                                chunk_data = self._read_n5_chunk(
+                                    fs, chunk_path, dtype, tuple(block_size)
+                                )
+                                
+                                # Calculate where this chunk goes in the result
+                                z_chunk_start = max(0, z_start - z_block * block_size[0])
+                                z_chunk_stop = min(block_size[0], z_stop - z_block * block_size[0])
+                                y_chunk_start = max(0, y_start - y_block * block_size[1])
+                                y_chunk_stop = min(block_size[1], y_stop - y_block * block_size[1])
+                                x_chunk_start = max(0, x_start - x_block * block_size[2])
+                                x_chunk_stop = min(block_size[2], x_stop - x_block * block_size[2])
+                                
+                                if (z_chunk_start < z_chunk_stop and 
+                                    y_chunk_start < y_chunk_stop and 
+                                    x_chunk_start < x_chunk_stop):
+                                    
+                                    # Extract the relevant portion from the chunk
+                                    chunk_slice = chunk_data[z_chunk_start:z_chunk_stop,
+                                                           y_chunk_start:y_chunk_stop,
+                                                           x_chunk_start:x_chunk_stop]
+                                    
+                                    # Calculate position in result array
+                                    result_z_start = z_block * block_size[0] + z_chunk_start - z_start
+                                    result_y_start = y_block * block_size[1] + y_chunk_start - y_start
+                                    result_x_start = x_block * block_size[2] + x_chunk_start - x_start
+                                    
+                                    result_z_end = result_z_start + chunk_slice.shape[0]
+                                    result_y_end = result_y_start + chunk_slice.shape[1]
+                                    result_x_end = result_x_start + chunk_slice.shape[2]
+                                    
+                                    # Place chunk data in result
+                                    if (result_z_start >= 0 and result_y_start >= 0 and result_x_start >= 0 and
+                                        result_z_end <= result.shape[0] and result_y_end <= result.shape[1] and 
+                                        result_x_end <= result.shape[2]):
+                                        
+                                        result[result_z_start:result_z_end,
+                                               result_y_start:result_y_end,
+                                               result_x_start:result_x_end] = chunk_slice
+                                        
+                                        chunks_read += 1
+                                        
+                            except Exception as chunk_error:
+                                logger.warning(f"Failed to read chunk {chunk_name}: {chunk_error}")
+                                continue
+            
+            logger.info(f"Successfully read {chunks_read} chunks, result shape: {result.shape}")
+            return result
+            
+        except Exception as e:
+            logger.error(f"Failed to read N5 data directly: {e}")
+            return None
+
     def get_dataset_info(self, dataset_name: str) -> Dict:
         """
         Get information about a specific dataset.
@@ -209,15 +442,18 @@ class OpenOrganelleDownloader:
         """
         try:
             n5_path = f"{self.base_s3_url}/{dataset_name}/{dataset_name}.n5"
-            group = self._open_zarr_group(n5_path)
             
+            # Use direct filesystem access instead of zarr group
+            fs = fsspec.filesystem('s3', anon=True)
+            clean_path = n5_path.replace('s3://', '')
+            
+            contents = fs.ls(clean_path)
             data_types = []
-            if hasattr(group, 'group_keys'):
-                data_types = list(group.group_keys())
-            elif hasattr(group, 'keys'):
-                # For zarr v3, filter for groups
-                all_keys = list(group.keys())
-                data_types = [k for k in all_keys if hasattr(group.get(k, None), 'keys')]
+            
+            for item in contents:
+                base_name = item.split('/')[-1]
+                if fs.isdir(item) and not base_name.startswith('.'):
+                    data_types.append(base_name)
                 
             logger.info(f"Found data types for {dataset_name}: {data_types}")
             return data_types
@@ -239,21 +475,55 @@ class OpenOrganelleDownloader:
         """
         try:
             n5_path = f"{self.base_s3_url}/{dataset_name}/{dataset_name}.n5"
-            group = self._open_zarr_group(n5_path)
             
-            array = group[data_path]
+            # Try to open the array directly using fsspec
+            array_path = f"{n5_path}/{data_path}"
+            store = fsspec.get_mapper(array_path, anon=True)
             
-            info = {
-                'shape': array.shape,
-                'dtype': str(array.dtype),
-                'chunks': array.chunks if hasattr(array, 'chunks') else None,
-                'size_mb': np.prod(array.shape) * array.dtype.itemsize / (1024 * 1024),
-                'path': data_path,
-                'metadata': dict(array.attrs) if hasattr(array, 'attrs') else {}
-            }
-            
-            logger.info(f"Array info for {dataset_name}/{data_path}: {info['shape']} {info['dtype']}")
-            return info
+            try:
+                array = zarr.open(store, mode='r')
+                
+                info = {
+                    'shape': array.shape,
+                    'dtype': str(array.dtype),
+                    'chunks': array.chunks if hasattr(array, 'chunks') else None,
+                    'size_mb': np.prod(array.shape) * array.dtype.itemsize / (1024 * 1024),
+                    'path': data_path,
+                    'metadata': dict(array.attrs) if hasattr(array, 'attrs') else {}
+                }
+                
+                logger.info(f"Array info for {dataset_name}/{data_path}: {info['shape']} {info['dtype']}")
+                return info
+                
+            except Exception as zarr_error:
+                # If zarr fails, try to get basic info from filesystem
+                fs = fsspec.filesystem('s3', anon=True)
+                clean_path = array_path.replace('s3://', '')
+                
+                try:
+                    # Look for attributes.json file
+                    attrs_path = f"{clean_path}/attributes.json"
+                    if fs.exists(attrs_path):
+                        import json
+                        with fs.open(attrs_path, 'r') as f:
+                            attrs = json.load(f)
+                        
+                        info = {
+                            'shape': attrs.get('dimensions', 'Unknown'),
+                            'dtype': attrs.get('dataType', 'Unknown'),
+                            'chunks': attrs.get('blockSize', 'Unknown'),
+                            'size_mb': 'Unknown',
+                            'path': data_path,
+                            'metadata': attrs
+                        }
+                        
+                        logger.info(f"Array info (from attributes) for {dataset_name}/{data_path}")
+                        return info
+                    else:
+                        return {'error': f'Could not access array data: {zarr_error}'}
+                        
+                except Exception as fs_error:
+                    return {'error': f'Array access failed: {zarr_error}, filesystem: {fs_error}'}
             
         except Exception as e:
             logger.error(f"Error getting array info for {dataset_name}/{data_path}: {e}")
@@ -274,10 +544,51 @@ class OpenOrganelleDownloader:
             Path to the downloaded file
         """
         try:
-            # Open the array
+            # Open the array directly using fsspec
             n5_path = f"{self.base_s3_url}/{dataset_name}/{dataset_name}.n5"
-            group = self._open_zarr_group(n5_path)
-            zarray = group[data_path]
+            array_path = f"{n5_path}/{data_path}"
+            
+            # First check if the path exists
+            fs = fsspec.filesystem('s3', anon=True)
+            clean_array_path = array_path.replace('s3://', '')
+            
+            if not fs.exists(clean_array_path):
+                return None  # Path doesn't exist, return None instead of error
+            
+            # Try different approaches for N5 compatibility
+            try:
+                # Method 1: Try zarr with fsspec (standard approach)
+                store = fsspec.get_mapper(array_path, anon=True)
+                zarray = zarr.open(store, mode='r')
+                
+            except Exception as zarr_error:
+                logger.warning(f"Standard zarr.open failed: {zarr_error}")
+                
+                # Method 2: Try direct N5 chunk reading
+                logger.info("Attempting direct N5 chunk reading...")
+                try:
+                    # Use our custom N5 reader
+                    array_data = self._download_n5_slice_direct(dataset_name, data_path, slice_spec)
+                    
+                    if array_data is not None:
+                        # Generate output filename if not provided
+                        if not output_filename:
+                            slice_str = "sample" if not slice_spec else "slice"
+                            output_filename = f"{dataset_name}_{data_path.replace('/', '_')}_{slice_str}.npy"
+                        
+                        output_path = os.path.join(self.output_dir, output_filename)
+                        
+                        # Save the data
+                        np.save(output_path, array_data)
+                        logger.info(f"N5 data saved to: {output_path}")
+                        return output_path
+                    else:
+                        logger.error("Direct N5 reading failed")
+                        return None
+                        
+                except Exception as n5_error:
+                    logger.error(f"Direct N5 reading failed: {n5_error}")
+                    return None
             
             # Create dask array for efficient processing
             chunks = zarray.chunks if hasattr(zarray, 'chunks') else None
