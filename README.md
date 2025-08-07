@@ -10,6 +10,20 @@ This project provides tools for exploring and downloading cellular imaging data 
 - 📥 Efficient data downloading and caching
 - 🧮 Integration with zarr, dask, and other scientific computing tools
 
+### Quick start: Jupyter Notebook
+
+Open and run the interactive notebook:
+```bash
+jupyter notebook openorganelle_explorer.ipynb
+```
+
+The notebook provides:
+- Environment verification
+- Dataset exploration 
+- Sample data download
+- Data visualization
+- Advanced data access patterns
+
 ## Project Structure
 ```
 uv-python-project/
