@@ -124,17 +124,24 @@ def create_surface_mesh_custom_thresholds(data, channel_name, threshold, color, 
         verts, faces, normals, values = measure.marching_cubes(
             smoothed_data, 
             level=threshold,
-            spacing=(1.0, 1.0, 1.0),
+            spacing=(1.0, 1.0, 1.0),  # Normal spacing, flattening applied to vertices
             allow_degenerate=False
         )
         
         print(f"✅ {channel_name}: Generated {len(verts):,} vertices, {len(faces):,} faces (ultra-massive scale)")
         
+        # Apply aggressive Z-axis flattening by scaling Z coordinates
+        verts_flattened = verts.copy()
+        # Since verts are [Z, Y, X], we want to flatten the Z dimension (index 0)
+        verts_flattened[:, 0] = verts_flattened[:, 0] * 0.2  # Flatten Z-axis to 20% (very flat)
+        
+        print(f"🔄 Z-flattening applied: Original Z range {verts[:, 0].min():.1f}-{verts[:, 0].max():.1f} → Flattened {verts_flattened[:, 0].min():.1f}-{verts_flattened[:, 0].max():.1f}")
+        
         # Create the mesh with optimized settings for ultra-massive data
         mesh = go.Mesh3d(
-            x=verts[:, 2],  # X coordinates
-            y=verts[:, 1],  # Y coordinates  
-            z=verts[:, 0],  # Z coordinates
+            x=verts_flattened[:, 2],  # X coordinates
+            y=verts_flattened[:, 1],  # Y coordinates  
+            z=verts_flattened[:, 0],  # Z coordinates (heavily flattened)
             i=faces[:, 0],  # Triangle vertex indices
             j=faces[:, 1],
             k=faces[:, 2],
@@ -177,7 +184,7 @@ def create_ultra_massive_scale_surface_mesh_visualization(centrin_data, tubulin_
     # Create surface meshes for each channel with UPDATED thresholds and colors
     print(f"\n🟡 Processing Centrin channel at ultra-massive scale...")
     centrin_mesh = create_surface_mesh_custom_thresholds(
-        centrin_data, "Centrin", threshold=0.1, color='gold', opacity=0.7  # Bright gold, reduced to 0.1 threshold
+        centrin_data, "Centrin", threshold=0.09, color='gold', opacity=0.7  # Bright gold, adjusted to 0.09 threshold
     )
     
     print(f"\n🟣 Processing Tubulin channel at ultra-massive scale...")
@@ -224,7 +231,7 @@ def create_ultra_massive_scale_surface_mesh_visualization(centrin_data, tubulin_
     fig.update_layout(
         title={
             'text': "Ultra-Massive Scale Enhanced Custom Surface Mesh: EMBL bmcc122 Multi-Channel 3D<br>" +
-                   "<sub>🟡 Centrin (0.1) Bright Gold | 🟣 Tubulin (0.1) Purple | 🔵 DNA (0.005) Blue - Up to 2200³ voxels</sub>",
+                   "<sub>🟡 Centrin (0.09) Bright Gold | 🟣 Tubulin (0.1) Purple | 🔵 DNA (0.005) Blue - Z Heavily Flattened</sub>",
             'x': 0.5,
             'font': {'size': 16}
         },
@@ -254,7 +261,8 @@ def create_ultra_massive_scale_surface_mesh_visualization(centrin_data, tubulin_
                 gridcolor="white",
                 zerolinecolor="white"
             ),
-            aspectmode='cube',
+            aspectmode='manual',  # Force manual aspect ratio
+            aspectratio=dict(x=1, y=1, z=0.2),  # Force Z to be very flat
             bgcolor='black'
         ),
         width=1800,  # Even larger for ultra-massive scale
@@ -268,10 +276,10 @@ def create_ultra_massive_scale_surface_mesh_visualization(centrin_data, tubulin_
         ),
         annotations=[
             dict(
-                text=f"Ultra-massive scale enhanced custom surface mesh (up to 2200³ voxels)<br>" +
+                text=f"Ultra-massive scale enhanced custom surface mesh (Z heavily flattened to 20%)<br>" +
                      f"Meshes generated: {meshes_added}/3 channels<br>" +
-                     f"High-detail thresholds: Bright Gold Centrin (0.1), Purple Tubulin (0.1), Blue DNA (0.005)<br>" +
-                     f"Shows complete cellular architecture with maximum detail sensitivity",
+                     f"High-detail thresholds: Bright Gold Centrin (0.09), Purple Tubulin (0.1), Blue DNA (0.005)<br>" +
+                     f"Shows complete cellular architecture with forced Z-axis compression for layer analysis",
                 x=0.02, y=0.02,
                 xref="paper", yref="paper",
                 xanchor="left", yanchor="bottom",
@@ -316,12 +324,12 @@ def main():
         print(f"\n✅ Ultra-massive scale enhanced custom surface mesh visualization complete!")
         print(f"📁 File created: {output_file}")
         print(f"\n🔍 This ultra-massive scale enhanced custom surface mesh visualization shows:")
-        print(f"   🟡 Centrin (0.1 threshold): Maximum centriole detail in bright gold")
+        print(f"   🟡 Centrin (0.09 threshold): Balanced centriole detail in bright gold")
         print(f"   🟣 Tubulin (0.1 threshold): Detailed microtubule network in vibrant purple")
         print(f"   🔵 DNA (0.005 threshold): Ultra-detailed nuclear structures in classic blue")
-        print(f"   📏 Ultra-massive scale: Up to 2200x2200x2200 voxels")
+        print(f"   📏 Z-axis heavily flattened to 20% with forced aspect ratio")
         print(f"   🎨 High-detail thresholds for maximum structural visibility")
-        print(f"   🌍 Shows complete cellular context with ultra-high sensitivity")
+        print(f"   🌍 Shows complete cellular context in pancake-like flattened view")
         print(f"   ⚡ Ultra-low thresholds reveal finest possible structural detail")
         
     except Exception as e:
