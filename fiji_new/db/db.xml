@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE pluginRecords [
+<!ELEMENT pluginRecords ((update-site | disabled-update-site)*, plugin*)>
+<!ELEMENT update-site EMPTY>
+<!ELEMENT disabled-update-site EMPTY>
+<!ELEMENT plugin (platform*, category*, version?, previous-version*)>
+<!ELEMENT version (description?, dependency*, link*, author*)>
+<!ELEMENT previous-version EMPTY>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT dependency EMPTY>
+<!ELEMENT link (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT platform (#PCDATA)>
+<!ELEMENT category (#PCDATA)>
+<!ATTLIST update-site name CDATA #REQUIRED>
+<!ATTLIST update-site url CDATA #REQUIRED>
+<!ATTLIST update-site keep-url CDATA #IMPLIED>
+<!ATTLIST update-site official CDATA #IMPLIED>
+<!ATTLIST update-site ssh-host CDATA #IMPLIED>
+<!ATTLIST update-site upload-directory CDATA #IMPLIED>
+<!ATTLIST update-site description CDATA #IMPLIED>
+<!ATTLIST update-site maintainer CDATA #IMPLIED>
+<!ATTLIST update-site timestamp CDATA #REQUIRED>
+<!ATTLIST disabled-update-site name CDATA #REQUIRED>
+<!ATTLIST disabled-update-site url CDATA #REQUIRED>
+<!ATTLIST disabled-update-site keep-url CDATA #IMPLIED>
+<!ATTLIST disabled-update-site official CDATA #IMPLIED>
+<!ATTLIST disabled-update-site ssh-host CDATA #IMPLIED>
+<!ATTLIST disabled-update-site upload-directory CDATA #IMPLIED>
+<!ATTLIST disabled-update-site description CDATA #IMPLIED>
+<!ATTLIST disabled-update-site maintainer CDATA #IMPLIED>
+<!ATTLIST disabled-update-site timestamp CDATA #REQUIRED>
+<!ATTLIST plugin update-site CDATA #IMPLIED>
+<!ATTLIST plugin filename CDATA #REQUIRED>
+<!ATTLIST plugin executable CDATA #IMPLIED>
+<!ATTLIST dependency filename CDATA #REQUIRED>
+<!ATTLIST dependency timestamp CDATA #IMPLIED>
+<!ATTLIST dependency overrides CDATA #IMPLIED>
+<!ATTLIST version timestamp CDATA #REQUIRED>
+<!ATTLIST version checksum CDATA #REQUIRED>
+<!ATTLIST version filesize CDATA #REQUIRED>
+<!ATTLIST previous-version filename CDATA #IMPLIED>
+<!ATTLIST previous-version timestamp CDATA #REQUIRED>
+<!ATTLIST previous-version timestamp-obsolete CDATA #IMPLIED>
+<!ATTLIST previous-version checksum CDATA #REQUIRED>]>
+<pluginRecords>
+    <plugin filename="jars/imglib2-5.8.0.jar">
+        <previous-version timestamp="20120802184342" timestamp-obsolete="0" checksum="93b8dce33d5056707c27af51e21418a903d87049" filename="jars/imglib2-2.0.0-SNAPSHOT.jar"/>
+        <previous-version timestamp="20120807204836" timestamp-obsolete="0" checksum="31abcd78f0ddc2e04ca73e9ad4ae699e5793f842" filename="jars/imglib2-2.0.0-SNAPSHOT.jar"/>
+        <previous-version timestamp="20120817173023" timestamp-obsolete="0" checksum="78d3182d453ab0c620f6655aabe601c9c33b138f" filename="jars/imglib2-2.0.0-SNAPSHOT.jar"/>
+        <previous-version timestamp="20120831192603" timestamp-obsolete="0" checksum="22f4b5b071f47372cdab9778415ab18bf918a6c5" filename="jars/imglib2-2.0.0-SNAPSHOT.jar"/>
+        <previous-version timestamp="20120905181330" timestamp-obsolete="0" checksum="af8e104ce6a1999ef60243b91d6acfdd9d875ec0" filename="jars/imglib2-2.0.0-SNAPSHOT.jar"/>
+        <previous-version timestamp="20120912153445" timestamp-obsolete="0" checksum="f3ae4f04811090142b43bbdc81aae2556b98808c" filename="jars/imglib2-2.0.0-beta4.jar"/>
+        <previous-version timestamp="20121020192927" timestamp-obsolete="0" checksum="b71a6fad8d5303f63dd05beb751bc3b4617af6ec" filename="jars/imglib2-2.0.0-beta5.jar"/>
+        <previous-version timestamp="20121106220203" timestamp-obsolete="0" checksum="0f9514030b32fe9e2b372538d6b1765b8ea48f87" filename="jars/imglib2-2.0.0-SNAPSHOT.jar"/>
+        <previous-version timestamp="20121211213913" timestamp-obsolete="0" checksum="4fb6100461ed30e9b787b002ab2a0a8b72c8b415" filename="jars/imglib2-2.0.0-SNAPSHOT.jar"/>
+        <previous-version timestamp="20130411222556" timestamp-obsolete="0" checksum="b37e58a79c3abae9d9f086b4eadce893699c249e" filename="jars/imglib2-2.0.0-SNAPSHOT.jar"/>
+        <previous-version timestamp="20130501224547" timestamp-obsolete="0" checksum="7ee5c009d5e355cbbb91b7e419cbc24b1a1f1235" filename="jars/imglib2-2.0.0-SNAPSHOT.jar"/>
+        <previous-version timestamp="20130620192406" timestamp-obsolete="0" checksum="1ee97bd0d10cba9bde8cf4d7cec2fa9fea0d4b2e" filename="jars/imglib2-2.0.0-beta-7.jar"/>
+        <previous-version timestamp="20130716162630" timestamp-obsolete="0" checksum="1941524d418b9919be462adcf833aba6112aa2fb" filename="jars/imglib2-2.0.0-beta-9.jar"/>
+        <previous-version timestamp="20130910183107" timestamp-obsolete="0" checksum="2197aa2ea27f071823f2f9d7fd46d84a59081041" filename="jars/imglib2-2.0.0-beta-15.jar"/>
+        <previous-version timestamp="20131018164809" timestamp-obsolete="0" checksum="02ea6427711175455c40ced9a667bfbca3174cd5" filename="jars/imglib2-2.0.0-beta-20.jar"/>
+        <previous-version timestamp="20131230181631" timestamp-obsolete="0" checksum="a24f6a79472458e645c6f5b7e7d9d572929162f9" filename="jars/imglib2-2.0.0-beta-22.jar"/>
+        <previous-version timestamp="20140217152409" timestamp-obsolete="0" checksum="e06ba8d2285d47aa6c004e94e10e69e7958ba06c" filename="jars/imglib2-2.0.0-beta-24.jar"/>
+        <previous-version timestamp="20140516211031" timestamp-obsolete="0" checksum="6e22d9dd33ce1c5ced83176fb0b88164fb0b409d" filename="jars/imglib2-2.0.0-beta-26.jar"/>
+        <previous-version timestamp="20141219193933" timestamp-obsolete="0" checksum="225b3943f95efd287c43a751b3003c178065ba8a" filename="jars/imglib2-2.2.0.jar"/>
+        <previous-version timestamp="20150318201525" timestamp-obsolete="0" checksum="d5f0909f2e53fdbe4f26d3c30d96d5bb5d202807" filename="jars/imglib2-2.2.1.jar"/>
+        <previous-version timestamp="20150617164216" timestamp-obsolete="0" checksum="8f38c671571ada0ba7445f319f60aa7df5c51ce0" filename="jars/imglib2-2.3.0.jar"/>
+        <previous-version timestamp="20150825195214" timestamp-obsolete="0" checksum="2b12ee6e3067da2770d3d7c288f61bcebcc4164b" filename="jars/imglib2-2.4.0.jar"/>
+        <previous-version timestamp="20151122015629" timestamp-obsolete="0" checksum="28450b02f21d6235e6c1f2ef25fe4d6d47f38fe4" filename="jars/imglib2-2.4.1.jar"/>
+        <previous-version timestamp="20151222021554" timestamp-obsolete="0" checksum="086a581dd89a6005d9ded43f1e9805de4db42b69" filename="jars/imglib2-2.5.0.jar"/>
+        <previous-version timestamp="20160226143219" timestamp-obsolete="0" checksum="b2a26a3cfbfad4625529d8074f3e76b87af9912a" filename="jars/imglib2-2.6.0.jar"/>
+        <previous-version timestamp="20160408145209" timestamp-obsolete="0" checksum="fc6440306f147622b9d6c249427f145d40d0012a" filename="jars/imglib2-2.7.0.jar"/>
+        <previous-version timestamp="20160506160615" timestamp-obsolete="0" checksum="45ac8173b6b92b554802f55b5d7089f0a38dfe9c" filename="jars/imglib2-2.9.0.jar"/>
+        <previous-version timestamp="20160818184259" timestamp-obsolete="0" checksum="b6547866a5b43dc5d7f5c409e72e35f17dae7d83" filename="jars/imglib2-3.2.0.jar"/>
+        <previous-version timestamp="20170130141012" timestamp-obsolete="0" checksum="e2f0716dbaf8a7f357a3b55414114aab0a1b29ea" filename="jars/imglib2-3.2.1.jar"/>
+        <previous-version timestamp="20170530201750" timestamp-obsolete="0" checksum="8119916b7935a5af873092dbba74f6f1188d743c" filename="jars/imglib2-4.2.1.jar"/>
+        <previous-version timestamp="20171226155229" timestamp-obsolete="0" checksum="947c0a14bc8a58c71e504880a96649de5ac315d6" filename="jars/imglib2-4.6.0.jar"/>
+        <previous-version timestamp="20180125120140" timestamp-obsolete="0" checksum="4ec423564ee6f5d1c780a77a736190bcf7def149" filename="jars/imglib2-4.6.1.jar"/>
+        <previous-version timestamp="20180526000053" timestamp-obsolete="0" checksum="5f9856897e8b9ce9c73b30215758b35bcf9c9616" filename="jars/imglib2-5.2.0.jar"/>
+        <previous-version timestamp="20180604210841" timestamp-obsolete="20181204141527" checksum="87fee9aa0e016d6aa1a4782ad533ab191e185824" filename="jars/imglib2-5.3.0.jar"/>
+        <previous-version timestamp="20181204141527" timestamp-obsolete="20200607222322" checksum="09423bb02161e6396c0e792f26f43e17e6a13252" filename="jars/imglib2-5.6.3.jar"/>
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="08a866a4b23c330236af32df09247f7f7532faaa" filename="jars/imglib2-5.8.0.jar"/>
+    </plugin>
+    <plugin filename="jars/bigdataviewer-core-10.2.1.jar">
+        <previous-version timestamp="20141219135141" timestamp-obsolete="0" checksum="df6a432d04f20781026c4f17b5d4615c4404af45" filename="jars/bigdataviewer-core-1.0.0.jar"/>
+        <previous-version timestamp="20150213230609" timestamp-obsolete="0" checksum="1d36e571fbba4cc1780755f60f1fb7d64e96efbe" filename="jars/bigdataviewer-core-1.0.5.jar"/>
+        <previous-version timestamp="20150216223535" timestamp-obsolete="0" checksum="4b8bbbbc974dda01fb2542046293c289890fac3a" filename="jars/bigdataviewer-core-1.0.6.jar"/>
+        <previous-version timestamp="20150407220452" timestamp-obsolete="0" checksum="8cdca733516091e2cd2dc3941aa8d342e35b128f" filename="jars/bigdataviewer-core-1.0.8.jar"/>
+        <previous-version timestamp="20150416130025" timestamp-obsolete="0" checksum="9cc9ef6e8ae43586c912640b71396cf75768543f" filename="jars/bigdataviewer-core-1.1.1.jar"/>
+        <previous-version timestamp="20150417213935" timestamp-obsolete="0" checksum="eddf35b43d091ea49e390aaf3cd0aa058e3a5cb0" filename="jars/bigdataviewer-core-1.1.2.jar"/>
+        <previous-version timestamp="20150430115943" timestamp-obsolete="0" checksum="2d62938a847fcfe29d81ff13b8e1078e5beafa08" filename="jars/bigdataviewer-core-1.1.3.jar"/>
+        <previous-version timestamp="20150519235833" timestamp-obsolete="0" checksum="656507b3ca095edd6a55846af81e4096e8922972" filename="jars/bigdataviewer-core-1.1.4.jar"/>
+        <previous-version timestamp="20150601174044" timestamp-obsolete="0" checksum="c35965b452fdfe4951976bacf6212f3cdb4b6ce3" filename="jars/bigdataviewer-core-1.2.0.jar"/>
+        <previous-version timestamp="20150702135243" timestamp-obsolete="0" checksum="970f9d47652fff8f21308d3ff0ee4f9ac016eb0a" filename="jars/bigdataviewer-core-1.2.1.jar"/>
+        <previous-version timestamp="20150723181610" timestamp-obsolete="0" checksum="d294eed6d49f9a6b37d3df7e8b25b596f4734192" filename="jars/bigdataviewer-core-1.2.2.jar"/>
+        <previous-version timestamp="20151016212837" timestamp-obsolete="0" checksum="bcb6b042e06c1ec71b4b82a884f2fa6e26edad89" filename="jars/bigdataviewer-core-2.0.0.jar"/>
+        <previous-version timestamp="20151027115445" timestamp-obsolete="0" checksum="96f89b8569e9db0d18b7b74c3c3c8643f829223b" filename="jars/bigdataviewer-core-2.0.1.jar"/>
+        <previous-version timestamp="20151124135730" timestamp-obsolete="0" checksum="b5af7827c785b19f9ce221b6d9a35c7f4a23e8b5" filename="jars/bigdataviewer-core-2.1.0.jar"/>
+        <previous-version timestamp="20160318125852" timestamp-obsolete="0" checksum="fee32c6c3172baf181ac00a2a651ebaf1c69a110" filename="jars/bigdataviewer-core-2.2.0.jar"/>
+        <previous-version timestamp="20160318142130" timestamp-obsolete="0" checksum="3155f3a119fc21296886e95f446624c4be3888d9" filename="jars/bigdataviewer-core-2.2.1.jar"/>
+        <previous-version timestamp="20160516123754" timestamp-obsolete="0" checksum="9be7b5798f2fe2ebd2cf3b0318903da21a437e58" filename="jars/bigdataviewer-core-2.4.0.jar"/>
+        <previous-version timestamp="20160818184259" timestamp-obsolete="0" checksum="46366b02318c42f649698e19df873cbb4804112b" filename="jars/bigdataviewer-core-2.5.1.jar"/>
+        <previous-version timestamp="20161114180218" timestamp-obsolete="0" checksum="9b6a58b56facde9e87d6968b22bd9575013dfb85" filename="jars/bigdataviewer-core-3.0.2.jar"/>
+        <previous-version timestamp="20161116145920" timestamp-obsolete="0" checksum="3617303ba60e5036bc6c26091a762ac406b21f6a" filename="jars/bigdataviewer-core-3.0.2.jar"/>
+        <previous-version timestamp="20161117001809" timestamp-obsolete="0" checksum="7bd5e539af3235025b06a69a0ab041dcfdadc83f" filename="jars/bigdataviewer-core-3.0.3.jar"/>
+        <previous-version timestamp="20170530201750" timestamp-obsolete="0" checksum="2fb7f81b90dd7988fabf011da7d79f03b3d5122d" filename="jars/bigdataviewer-core-4.1.0.jar"/>
+        <previous-version timestamp="20171226155229" timestamp-obsolete="0" checksum="638eb286883e66875ee0366a39e9960b4d12363d" filename="jars/bigdataviewer-core-4.3.1.jar"/>
+        <previous-version timestamp="20180526000053" timestamp-obsolete="0" checksum="1da3ec5a93e64d55d573420854d148e71080be0f" filename="jars/bigdataviewer-core-5.0.0.jar"/>
+        <previous-version timestamp="20181113140709" timestamp-obsolete="20190620123501" checksum="c42af02bea74ed95b4a055e47a15f5b1c8bb50ef" filename="jars/bigdataviewer-core-5.1.0.jar"/>
+        <previous-version timestamp="20190620123458" timestamp-obsolete="20200731193402" checksum="09b0f2733846564c23705003c00aa1fd86652d01" filename="jars/bigdataviewer-core-7.0.0.jar"/>
+        <previous-version timestamp="20200731193402" timestamp-obsolete="20200805001019" checksum="1cfcaa2ffbcc6c3ed90f5a3b22a389d3bf8e0b0e" filename="jars/bigdataviewer-core-9.0.5.jar"/>
+        <previous-version timestamp="20200805001019" timestamp-obsolete="20210222164220" checksum="75b365f5a5c719cc104a5fb48434b5ca7b57b3e5" filename="jars/bigdataviewer-core-9.0.6.jar"/>
+        <previous-version timestamp="20210222164216" timestamp-obsolete="20211112135002" checksum="3e0955f46e636062debaf64a6807556b82ec33c4" filename="jars/bigdataviewer-core-10.2.0.jar"/>
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20220927132817" checksum="54f34385f09f3ed9e65be6be62485aa40539fa12" filename="jars/bigdataviewer-core-10.2.1.jar"/>
+    </plugin>
+    <plugin filename="jars/spim_data-2.2.5.jar">
+        <previous-version timestamp="20141219135141" timestamp-obsolete="0" checksum="1196743de146fb2bb5882ddd373537dcf991a856" filename="jars/spim_data-1.0.0-beta-3.jar"/>
+        <previous-version timestamp="20150213230609" timestamp-obsolete="0" checksum="390943c5f99d4d78fa77c107d4c409319ad1767a" filename="jars/spim_data-1.0.0-beta-5.jar"/>
+        <previous-version timestamp="20150417213935" timestamp-obsolete="0" checksum="3d8d1fca81d3630078c1110bac25041eac897c3b" filename="jars/spim_data-1.0.0-beta-7.jar"/>
+        <previous-version timestamp="20151016212837" timestamp-obsolete="0" checksum="8d8518ea82d4b7c85e1febb299db8fa9ce2a1009" filename="jars/spim_data-2.0.0.jar"/>
+        <previous-version timestamp="20151221214152" timestamp-obsolete="0" checksum="d45ac987d73eefb2c144f887a7ae808d9baf0b96" filename="jars/spim_data-2.0.1.jar"/>
+        <previous-version timestamp="20160818184259" timestamp-obsolete="0" checksum="329f34eaf2b5fbb2fc2dfbc72491f616c1b1c3b9" filename="jars/spim_data-2.1.0.jar"/>
+        <previous-version timestamp="20161114180218" timestamp-obsolete="0" checksum="8a53a66bd6e68273a1acb6c6add4930a768faa7a" filename="jars/spim_data-2.2.0.jar"/>
+        <previous-version timestamp="20171124113040" timestamp-obsolete="0" checksum="528842d82403d0bfa3051a086212fd27b140c66c" filename="jars/spim_data-2.2.1.jar"/>
+        <previous-version timestamp="20180806201151" timestamp-obsolete="20200731193402" checksum="f4781c7c20fb0e975e4a25741b488b953121ab0b" filename="jars/spim_data-2.2.2.jar"/>
+        <previous-version timestamp="20200731193402" timestamp-obsolete="20211112135002" checksum="8b71c4e3d00961b0da1b7fbc06703fbf30bc7f9f" filename="jars/spim_data-2.2.5.jar"/>
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20220927132817" checksum="c39498071a042bb776a6a63a7aa55ef5498a730c" filename="jars/spim_data-2.2.5.jar"/>
+    </plugin>
+    <plugin filename="jars/j3dcore-1.6.0-scijava-3-SNAPSHOT.jar">
+        <version checksum="7de3fb2dc16ff558cd10b9b7151a18f21c338639" timestamp="20200918173335" filesize="1955293">
+            <description>3D Graphics API for the Java Platform</description>
+            <dependency filename="jars/jogl-all.jar" timestamp="20151118124129"/>
+            <dependency filename="jars/gluegen-rt.jar" timestamp="20151118124129"/>
+            <author>Curtis Rueden</author>
+        </version>
+        <previous-version timestamp="20151123211031" timestamp-obsolete="20200731193402" checksum="a385a321a7e9a9ab0da67af020c6a6e3ebc4dd8b" filename="jars/j3dcore-1.6.0-scijava-2.jar"/>
+        <previous-version timestamp="20200731193402" timestamp-obsolete="20200918173335" checksum="b6adb915151e67c1dc9a9eecc24dafbcc6ad6884" filename="jars/j3dcore-1.6.0-scijava-3-SNAPSHOT.jar"/>
+    </plugin>
+    <plugin filename="jars/commons-compress-1.18.jar">
+        <previous-version timestamp="20160121045452" timestamp-obsolete="20200607222322" checksum="518ae46f82932aa18019c9887acfb413704e30b3" filename="jars/commons-compress-1.4.1.jar"/>
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="8bbe83390808b433895dbebf36669b8ce213e7af" filename="jars/commons-compress-1.18.jar"/>
+    </plugin>
+    <plugin filename="jars/bigdataviewer-vistools-1.0.0-beta-29.jar">
+        <previous-version timestamp="20161211173104" timestamp-obsolete="0" checksum="95f179ad957f8c57c054f0fb2db501639e550632" filename="jars/bigdataviewer-vistools-1.0.0-beta-4.jar"/>
+        <previous-version timestamp="20170530201750" timestamp-obsolete="0" checksum="afa3a35220983336227ee2611db9ce12b943f5c9" filename="jars/bigdataviewer-vistools-1.0.0-beta-5.jar"/>
+        <previous-version timestamp="20171226155229" timestamp-obsolete="0" checksum="b01426ea3e467baf0094c975a3195ca9870b2db5" filename="jars/bigdataviewer-vistools-1.0.0-beta-8.jar"/>
+        <previous-version timestamp="20180526000053" timestamp-obsolete="20190620124052" checksum="54721eef59228eeb6d6008aaea5ee02e3b2cc088" filename="jars/bigdataviewer-vistools-1.0.0-beta-11.jar"/>
+        <previous-version timestamp="20190620124048" timestamp-obsolete="20200731193402" checksum="1fac0b34ee8cc50a642437fa05dadb8cab624c91" filename="jars/bigdataviewer-vistools-1.0.0-beta-15.jar"/>
+        <previous-version timestamp="20200731193402" timestamp-obsolete="20210222164220" checksum="d677a35ccf59904acd39cbd82e17a65e40284271" filename="jars/bigdataviewer-vistools-1.0.0-beta-20.jar"/>
+        <previous-version timestamp="20210222164216" timestamp-obsolete="20211112135002" checksum="164a852bae35849a42e5ff56aeab50ae1fff69ea" filename="jars/bigdataviewer-vistools-1.0.0-beta-29.jar"/>
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20220927132817" checksum="ddcbdcf5f2dd7acfe271539925a6210ce88857b6" filename="jars/bigdataviewer-vistools-1.0.0-beta-29.jar"/>
+    </plugin>
+    <plugin filename="jars/n5-imglib2-3.4.1.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="ad24eff8a08ff8ba3986aaf46e4dfefa7db00176" filename="jars/n5-imglib2-3.4.1.jar"/>
+    </plugin>
+    <plugin filename="jars/aws-java-sdk-s3-1.11.534.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="dc6901306cfe847be1404b2adf70368a881f47f7" filename="jars/aws-java-sdk-s3-1.11.534.jar"/>
+    </plugin>
+    <plugin filename="jars/n5-2.1.1.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="fd8424569df5e68c5bf40c01c9a0aca276faee02" filename="jars/n5-2.1.1.jar"/>
+    </plugin>
+    <plugin filename="jars/jackson-core-2.10.2.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="26e1990333a906f6b42e1136ba79b1187ed03747" filename="jars/jackson-core-2.10.2.jar"/>
+    </plugin>
+    <plugin filename="jars/aws-java-sdk-kms-1.11.534.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="8cb26ee79a47048b59f65b9ebcf060e1cc384e03" filename="jars/aws-java-sdk-kms-1.11.534.jar"/>
+    </plugin>
+    <plugin filename="jars/n5-aws-s3-2.1.1-platybrowser.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="4566cfb8aeff5e8c424cec1de7b5325307316b71" filename="jars/n5-aws-s3-2.1.1-platybrowser.jar"/>
+    </plugin>
+    <plugin filename="jars/lz4-java-1.5.0.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="c1046f79dfe6993026f3929c4eb298db2a674c28" filename="jars/lz4-java-1.5.0.jar"/>
+    </plugin>
+    <plugin filename="jars/jackson-databind-2.10.2.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="e4b7788a4c3bcfd05835dcd184a8c4199c482b7c" filename="jars/jackson-databind-2.10.2.jar"/>
+    </plugin>
+    <plugin filename="jars/jackson-annotations-2.10.2.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="1fd592e4cd9e541cad2085a0e567cec9e4b3803b" filename="jars/jackson-annotations-2.10.2.jar"/>
+    </plugin>
+    <plugin filename="jars/aws-java-sdk-core-1.11.534.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200915161818" checksum="a095bd961c757487e202882664bf3eff72554ac3" filename="jars/aws-java-sdk-core-1.11.534.jar"/>
+    </plugin>
+    <plugin filename="jars/flatlaf-1.0.jar">
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20220927132817" checksum="d389d2b44a60482f4d6251f15cc566b72abb925e" filename="jars/flatlaf-1.0.jar"/>
+    </plugin>
+    <plugin filename="jars/classgraph-4.8.60.jar">
+        <version checksum="de775e7ff456f77d6fc7f3b57b8e6129f06f4f2c" timestamp="20221109160237" filesize="476777">
+            <description>The uber-fast, ultra-lightweight classpath and module scanner for JVM languages.</description>
+            <author>Luke Hutchison</author>
+        </version>
+    </plugin>
+    <plugin filename="jars/bigvolumeviewer-0.3.4.jar">
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20230922102231" checksum="92acf189c05c878b491fe50af0704ca669ab199c" filename="jars/bigvolumeviewer-0.2.0.jar"/>
+        <previous-version timestamp="20230922102231" timestamp-obsolete="20240607120434" checksum="1a14ce258d3ff9b75ddedb82eccb72f988bb8fdf" filename="jars/bigvolumeviewer-0.3.1.jar"/>
+        <previous-version timestamp="20240607120434" timestamp-obsolete="20250124172633" checksum="fe0d35239a641f874c3c517a343029fc4872d11f" filename="jars/bigvolumeviewer-0.3.4.jar"/>
+        <previous-version timestamp="20250124172633" timestamp-obsolete="20250416075330" checksum="2f0c36c0835b58a1959e0599a07f0519b3079936" filename="jars/bigvolumeviewer-0.3.4.jar"/>
+    </plugin>
+    <plugin filename="jars/mobie-0.6.1.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200618084927" checksum="6ed8ab00bc6b05e8ce17aa3e1e03e2e83091501c" filename="jars/mobie-0.5.0.jar"/>
+        <previous-version timestamp="20200618084927" timestamp-obsolete="20200915161818" checksum="b82d01207683c0a093238d935383a532dfc259cd" filename="jars/mobie-0.5.0.jar"/>
+        <previous-version timestamp="20200915161818" timestamp-obsolete="20200915162349" checksum="29a323aacf6891398dff5ba1bded6b9e92aab5a4" filename="jars/mobie-0.5.1-SNAPSHOT.jar"/>
+        <previous-version timestamp="20200915162348" timestamp-obsolete="20200918173335" checksum="fcd616eb12fa530880af19295382159cac26852e" filename="jars/mobie-0.5.1-SNAPSHOT.jar"/>
+        <previous-version timestamp="20200918173335" timestamp-obsolete="20201120123132" checksum="9e0b274ed0b3eb19a51f585e296285a4fce18428" filename="jars/mobie-0.5.1.jar"/>
+        <previous-version timestamp="20201120123131" timestamp-obsolete="20210128103458" checksum="9f468f952268076b3f584b5be4c0177e493d7c45" filename="jars/mobie-0.5.3.jar"/>
+        <previous-version timestamp="20210128103457" timestamp-obsolete="20210201113641" checksum="20f27197e0e6bbccf96e3cdf17b5c3f5d2d49103" filename="jars/mobie-0.5.5.jar"/>
+        <previous-version timestamp="20210201113640" timestamp-obsolete="20210210172741" checksum="9792b3eef0a88322006d1a4477dd314edb17a80f" filename="jars/mobie-0.5.5.jar"/>
+        <previous-version timestamp="20210210172741" timestamp-obsolete="20210211112003" checksum="29182aa0b64f8117816ca8db59c4d168279086bb" filename="jars/mobie-0.5.5.jar"/>
+        <previous-version timestamp="20210211112002" timestamp-obsolete="20210211113606" checksum="37ad2028d985f534660bff0cffad49147051e38b" filename="jars/mobie-0.5.6.jar"/>
+        <previous-version timestamp="20210211113606" timestamp-obsolete="20210312123443" checksum="28af199148f61756257f4ccc88ba66e69baa323f" filename="jars/mobie-0.5.6.jar"/>
+        <previous-version timestamp="20210312123443" timestamp-obsolete="20211112135302" checksum="d1174a83870507499767401239c3edebfdd15e7e" filename="jars/mobie-0.6.1.jar"/>
+    </plugin>
+    <plugin filename="jars/imagej-utils-0.7.0.jar" executable="true">
+        <previous-version timestamp="20200607222322" timestamp-obsolete="20200618084927" checksum="ad20537c81ed9f47028143796b2726d38778be42" filename="jars/imagej-utils-0.5.0.jar"/>
+        <previous-version timestamp="20200618084927" timestamp-obsolete="20200915161818" checksum="bfac33038f4d1648c781fe2cbdeda1d0586f911e" filename="jars/imagej-utils-0.5.0.jar"/>
+        <previous-version timestamp="20200915161818" timestamp-obsolete="20200918173335" checksum="7e020257e131340cab7810c538150745df7218f3" filename="jars/imagej-utils-0.5.4-SNAPSHOT.jar"/>
+        <previous-version timestamp="20200918173335" timestamp-obsolete="20201120123132" checksum="6341c08374b8057424f4623d81aaff5a1a5bba86" filename="jars/imagej-utils-0.5.4.jar"/>
+        <previous-version timestamp="20201120123131" timestamp-obsolete="20210128103458" checksum="111a2b7f6469ba16de3b61cb1412dd4599bbe7da" filename="jars/imagej-utils-0.5.6.jar"/>
+        <previous-version timestamp="20210128103457" timestamp-obsolete="20210211112003" checksum="07796711f5f7cf9ead2ca0ba3a46de3f24c936af" filename="jars/imagej-utils-0.5.7.jar"/>
+        <previous-version timestamp="20210211112002" timestamp-obsolete="20210211113606" checksum="e02c583882db9a1dd665f8f3e2642631ea9baad2" filename="jars/imagej-utils-0.5.8.jar"/>
+        <previous-version timestamp="20210211113606" timestamp-obsolete="20210312123443" checksum="b110aaf0329d457c4a8245f298439aff42cfb42d" filename="jars/imagej-utils-0.5.8.jar"/>
+        <previous-version timestamp="20210312123443" timestamp-obsolete="20211112135002" checksum="44d46332f4d6ca7c75d41548a206859a1d306242" filename="jars/imagej-utils-0.6.2.jar"/>
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20220525164640" checksum="533d0f95ae997e3f46e3a66beae68aa1b0f9e938" filename="jars/imagej-utils-0.6.4.jar"/>
+        <previous-version timestamp="20220525164640" timestamp-obsolete="20220927132817" checksum="efccec362100109588405eb82d86ea9a6893fac7" filename="jars/imagej-utils-0.6.8.jar"/>
+        <previous-version timestamp="20220927132816" timestamp-obsolete="20240607120434" checksum="47c6fab70b04d742090878dfcd003196f3b60a4e" filename="jars/imagej-utils-0.6.9.jar"/>
+        <previous-version timestamp="20240607120434" timestamp-obsolete="20250124172633" checksum="89e3b7b827289d5d6efac40acffbad4302252a61" filename="jars/imagej-utils-0.7.0.jar"/>
+    </plugin>
+    <plugin filename="jars/mastodon-1.0.0-beta-21.jar">
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20230922102630" checksum="7035b792503db8ef6fe480c72c7836276c3d1711" filename="jars/mastodon-1.0.0-beta-21.jar"/>
+    </plugin>
+    <plugin filename="jars/mastodon-graph-1.0.0-beta-20.jar">
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20230922102630" checksum="4bb6915ef530d401d2965f4e3f3d78980f556fe0" filename="jars/mastodon-graph-1.0.0-beta-20.jar"/>
+    </plugin>
+    <plugin filename="jars/mobie-viewer-fiji-6.3.8.jar">
+        <version checksum="a516ee79bacaa0a223efcc38eb04158ece614976" timestamp="20250804164857" filesize="1620781">
+            <description>Fiji viewer for MoBIE projects</description>
+            <dependency filename="jars/imglib2-realtransform.jar" timestamp="20210420104543"/>
+            <dependency filename="jars/bigdataviewer-core.jar" timestamp="20210927120859"/>
+            <dependency filename="jars/j3dcore.jar" timestamp="20200806131557"/>
+            <dependency filename="jars/spim_data.jar" timestamp="20210913093606"/>
+            <dependency filename="jars/bigdataviewer-playground.jar" timestamp="20211104092239"/>
+            <dependency filename="jars/bigdataviewer-vistools.jar" timestamp="20210927120900"/>
+            <dependency filename="jars/imglib2-cache.jar" timestamp="20210420124839"/>
+            <dependency filename="jars/mobie-io.jar" timestamp="20211111141644"/>
+            <dependency filename="jars/ij1-patcher.jar" timestamp="20210927120845"/>
+            <dependency filename="jars/ij.jar" timestamp="20210927120857"/>
+            <dependency filename="jars/scijava-listeners.jar" timestamp="20210420104749"/>
+            <dependency filename="jars/gson.jar" timestamp="20210420104746"/>
+            <dependency filename="jars/flatlaf.jar" timestamp="20210420124842"/>
+            <dependency filename="jars/jdom2.jar" timestamp="20210420104746"/>
+            <dependency filename="jars/jakarta.activation-api.jar" timestamp="20210420104822"/>
+            <dependency filename="jars/commons-lang.jar" timestamp="20210420104603"/>
+            <dependency filename="jars/commons-io.jar" timestamp="20210420104549"/>
+            <dependency filename="jars/n5.jar" timestamp="20211112133628"/>
+            <dependency filename="jars/imglib2-ij.jar" timestamp="20210420104543"/>
+            <dependency filename="jars/scijava-optional.jar" timestamp="20210420104546"/>
+            <dependency filename="jars/j3dutils.jar" timestamp="20210420104817"/>
+            <dependency filename="jars/fiji-lib.jar" timestamp="20210927120845"/>
+            <dependency filename="jars/commons-compress.jar" timestamp="20210420104751"/>
+            <dependency filename="plugins/bigdataviewer_fiji.jar" timestamp="20210312121753"/>
+            <dependency filename="jars/imglib2-roi.jar" timestamp="20210927120856"/>
+            <dependency filename="jars/udunits.jar" timestamp="20200312194249"/>
+            <dependency filename="plugins/bio-formats_plugins.jar" timestamp="20220405131533"/>
+            <dependency filename="jars/bio-formats/ome-common.jar" timestamp="20211112133626"/>
+            <dependency filename="jars/tablesaw-core.jar" timestamp="20220702202919"/>
+            <dependency filename="jars/commons-lang3.jar" timestamp="20210927120908"/>
+            <dependency filename="jars/picocli.jar" timestamp="20211102192005"/>
+            <dependency filename="jars/jackson-jq.jar" timestamp="20210420133626"/>
+            <dependency filename="plugins/3D_Viewer.jar" timestamp="20230807161804"/>
+            <dependency filename="jars/bigdataviewer-image-loaders.jar" timestamp="20230811161344"/>
+            <dependency filename="jars/guava.jar" timestamp="20230810165846"/>
+            <dependency filename="jars/mpicbg.jar" timestamp="20230810165841"/>
+            <dependency filename="jars/n5-universe.jar" timestamp="20240607115817"/>
+            <dependency filename="jars/scijava-ui-swing.jar" timestamp="20230810165846"/>
+            <dependency filename="plugins/bigwarp_fiji.jar" timestamp="20240725153644"/>
+            <dependency filename="jars/bvv-playground.jar" timestamp="20241216131604"/>
+            <dependency filename="jars/imglib2.jar" timestamp="20241018164059"/>
+            <dependency filename="jars/imglib2-algorithm.jar" timestamp="20241018164124"/>
+            <dependency filename="jars/ui-behaviour.jar" timestamp="20231019152421"/>
+            <dependency filename="jars/scijava-common.jar" timestamp="20241018164059"/>
+            <dependency filename="jars/commons-math3.jar" timestamp="20230807161637"/>
+            <dependency filename="jars/java3d-core.jar" timestamp="20241018164258"/>
+            <author>Christian Tischer</author>
+        </version>
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20220314154339" checksum="2acd0ca715e8a2246faab6196d367d04a6d92fb8" filename="jars/mobie-viewer-fiji-2.0.6.jar"/>
+        <previous-version timestamp="20220314154339" timestamp-obsolete="20220405132105" checksum="fccadca1c465912bc93d50ae5966c9f19e6d491e" filename="jars/mobie-viewer-fiji-2.1.7.jar"/>
+        <previous-version timestamp="20220405132121" timestamp-obsolete="20220525164640" checksum="7bc5d2cbeea3eba3bc3a0be170985c799764067f" filename="jars/mobie-viewer-fiji-2.1.8.jar"/>
+        <previous-version timestamp="20220525164640" timestamp-obsolete="20220607104958" checksum="a7cad0abdafd58dd92b24a5ca9aebed5479350c9" filename="jars/mobie-viewer-fiji-2.1.9.jar"/>
+        <previous-version timestamp="20220607104958" timestamp-obsolete="20220719171322" checksum="9a508ad96b2b21507bdfc3427be167543230bbb3" filename="jars/mobie-viewer-fiji-2.1.10.jar"/>
+        <previous-version timestamp="20220719171321" timestamp-obsolete="20220923150814" checksum="f78cac23717b6007a7733cf45099cc2b3beb5398" filename="jars/mobie-viewer-fiji-2.1.10.jar"/>
+        <previous-version timestamp="20220923150814" timestamp-obsolete="20220927132817" checksum="9ded6d28aaf2003865cd03afe9aac34ac50a6253" filename="jars/mobie-viewer-fiji-2.1.11.jar"/>
+        <previous-version timestamp="20220927132816" timestamp-obsolete="20221109160235" checksum="1a033d41bc09e3cfc939b8a82288a3f9710daaad" filename="jars/mobie-viewer-fiji-2.2.1.jar"/>
+        <previous-version timestamp="20221109160237" timestamp-obsolete="20221115090703" checksum="470266891f088d0efe2fa5ee3386a87e73b4ae8f" filename="jars/mobie-viewer-fiji-3.0.4.jar"/>
+        <previous-version timestamp="20221115090703" timestamp-obsolete="20221117105022" checksum="306834d612a404373027953776b2ddb1d6c12c75" filename="jars/mobie-viewer-fiji-3.0.5.jar"/>
+        <previous-version timestamp="20221117105022" timestamp-obsolete="20230111094158" checksum="819c09f112a71ee550c4a01e785dd4d1201e5588" filename="jars/mobie-viewer-fiji-3.0.6.jar"/>
+        <previous-version timestamp="20230111094159" timestamp-obsolete="20230216193551" checksum="a9d5787c4b9bcdaaafcff5827c6c80222ca740af" filename="jars/mobie-viewer-fiji-3.0.9.jar"/>
+        <previous-version timestamp="20230216193551" timestamp-obsolete="20230505140922" checksum="28393c70f92d70adff7442378ba64f5a910f70c0" filename="jars/mobie-viewer-fiji-3.1.0.jar"/>
+        <previous-version timestamp="20230505140922" timestamp-obsolete="20230922102231" checksum="7c27b46506016d57d574ee467aca34ac65699220" filename="jars/mobie-viewer-fiji-4.0.0.jar"/>
+        <previous-version timestamp="20230922102231" timestamp-obsolete="20231019152323" checksum="d1a54685fa0876f6e17d8fb7200ce6cf640728ac" filename="jars/mobie-viewer-fiji-4.1.0.jar"/>
+        <previous-version timestamp="20231019152323" timestamp-obsolete="20231130130639" checksum="eb03b867f10af4baf2d3166c18fd704d201fe64d" filename="jars/mobie-viewer-fiji-4.1.1.jar"/>
+        <previous-version timestamp="20231130130639" timestamp-obsolete="20231206121312" checksum="c5f898fe3dc03020d07d3610395fc5d5c49cea4e" filename="jars/mobie-viewer-fiji-4.1.2.jar"/>
+        <previous-version timestamp="20231206121312" timestamp-obsolete="20231208100549" checksum="35995177f72654e35d6e8ca3727d7151b13f5899" filename="jars/mobie-viewer-fiji-4.1.3.jar"/>
+        <previous-version timestamp="20231208100549" timestamp-obsolete="20231218180836" checksum="5c7c1c0ebe6e43c3b9d2100cc643ab67973ec3a6" filename="jars/mobie-viewer-fiji-4.1.4.jar"/>
+        <previous-version timestamp="20231218180836" timestamp-obsolete="20240207175320" checksum="fc947d592f2f795f9de61727e2078d17fb8cd7da" filename="jars/mobie-viewer-fiji-4.1.5.jar"/>
+        <previous-version timestamp="20240207175320" timestamp-obsolete="20240208121206" checksum="447c986ea8e64ed75c90342699f1b5ec03f32a46" filename="jars/mobie-viewer-fiji-4.2.0.jar"/>
+        <previous-version timestamp="20240208121205" timestamp-obsolete="20240219090711" checksum="9f73e3d32e1dc37a7b14b9f20aea3e6b87d7b4f0" filename="jars/mobie-viewer-fiji-4.2.1.jar"/>
+        <previous-version timestamp="20240219090710" timestamp-obsolete="20240220175333" checksum="e68ea34d85c324ad3374807f2263071fceb69023" filename="jars/mobie-viewer-fiji-4.2.2.jar"/>
+        <previous-version timestamp="20240220175333" timestamp-obsolete="20240227202808" checksum="70941e73fdc8ba13e7ecc2950ff2656005ec4c02" filename="jars/mobie-viewer-fiji-4.2.3.jar"/>
+        <previous-version timestamp="20240227202808" timestamp-obsolete="20240305181557" checksum="c81b8af408ef6e324fb75a9f87cb961cd2989eed" filename="jars/mobie-viewer-fiji-4.3.0.jar"/>
+        <previous-version timestamp="20240305181557" timestamp-obsolete="20240315163757" checksum="de01f44ddc06ae8571bc230d1d8a391cb5b0600a" filename="jars/mobie-viewer-fiji-4.4.1-SNAPSHOT.jar"/>
+        <previous-version timestamp="20240315163756" timestamp-obsolete="20240315171559" checksum="b2538acb9d78c4a4effc61b578a2521b827dfa69" filename="jars/mobie-viewer-fiji-4.4.1.jar"/>
+        <previous-version timestamp="20240315171559" timestamp-obsolete="20240315181302" checksum="8b2335634924c3d973f8f17cc109ed9323eab4b6" filename="jars/mobie-viewer-fiji-4.4.2.jar"/>
+        <previous-version timestamp="20240315181302" timestamp-obsolete="20240607120434" checksum="0301bd7a887a9cc8338b4c730ffc5835e3202d90" filename="jars/mobie-viewer-fiji-4.4.2.jar"/>
+        <previous-version timestamp="20240607120434" timestamp-obsolete="20240610095051" checksum="63c9ac722ad9afbce4770e1ee49d997aa8f6d241" filename="jars/mobie-viewer-fiji-5.0.0.jar"/>
+        <previous-version timestamp="20240610095051" timestamp-obsolete="20240610110726" checksum="095af811eb181c88172e3ea2b259191463f6317d" filename="jars/mobie-viewer-fiji-5.0.1.jar"/>
+        <previous-version timestamp="20240610110726" timestamp-obsolete="20240612095636" checksum="882f86956b7b5f650f650fdac46887ce6e157cfb" filename="jars/mobie-viewer-fiji-5.0.2.jar"/>
+        <previous-version timestamp="20240612095636" timestamp-obsolete="20240613110838" checksum="42af60882858fb172a247b86885b9b416d8e059e" filename="jars/mobie-viewer-fiji-5.0.3.jar"/>
+        <previous-version timestamp="20240613110838" timestamp-obsolete="20240614150406" checksum="67d9f4ff0d1d5f5f79e35ccc1cd0a532915d2232" filename="jars/mobie-viewer-fiji-5.0.4.jar"/>
+        <previous-version timestamp="20240614150405" timestamp-obsolete="20240617165344" checksum="f36df56d40dd0d89276da8de48cd821dee27b335" filename="jars/mobie-viewer-fiji-5.0.5.jar"/>
+        <previous-version timestamp="20240617165344" timestamp-obsolete="20240618103759" checksum="e9d20cb09ba92960862a0347fd70c665e0aa7524" filename="jars/mobie-viewer-fiji-5.0.6.jar"/>
+        <previous-version timestamp="20240618103759" timestamp-obsolete="20240619162400" checksum="13479164edba01d80b2ec7d8e3304fa10b567148" filename="jars/mobie-viewer-fiji-5.0.7.jar"/>
+        <previous-version timestamp="20240619162400" timestamp-obsolete="20240620090840" checksum="d714ac8fffd03fb341649957feab04e374811cf0" filename="jars/mobie-viewer-fiji-5.0.9.jar"/>
+        <previous-version timestamp="20240620090839" timestamp-obsolete="20240620202900" checksum="bea924740454751c655b792c7bb393616bed88c8" filename="jars/mobie-viewer-fiji-5.0.10.jar"/>
+        <previous-version timestamp="20240620202859" timestamp-obsolete="20240626163343" checksum="95dc3ed6e47abe8e3d0c9cc555cbd77437305821" filename="jars/mobie-viewer-fiji-5.1.0.jar"/>
+        <previous-version timestamp="20240626163343" timestamp-obsolete="20240701202638" checksum="f21165092b5e5891bc40520ad3f774a8f258b616" filename="jars/mobie-viewer-fiji-5.1.1.jar"/>
+        <previous-version timestamp="20240701202638" timestamp-obsolete="20240705090057" checksum="b750d933c390cf26ab98da0a3c515123b2a49fae" filename="jars/mobie-viewer-fiji-5.1.2.jar"/>
+        <previous-version timestamp="20240705090057" timestamp-obsolete="20240705133112" checksum="e5e21fec4f2ec27145498c1685fd4188b656f580" filename="jars/mobie-viewer-fiji-5.1.4.jar"/>
+        <previous-version timestamp="20240705133113" timestamp-obsolete="20240708145840" checksum="0c106abf105ff31bf84a6b7b4a5abf2bf24e684c" filename="jars/mobie-viewer-fiji-5.1.5.jar"/>
+        <previous-version timestamp="20240708145839" timestamp-obsolete="20240709121940" checksum="c9c4485bf30ace628f1eab1b3061b39628c8bbef" filename="jars/mobie-viewer-fiji-5.1.6.jar"/>
+        <previous-version timestamp="20240709121940" timestamp-obsolete="20240709130558" checksum="31ac580b8c7aa2ec8fee82eb584fedb52696ced7" filename="jars/mobie-viewer-fiji-5.1.7.jar"/>
+        <previous-version timestamp="20240709130558" timestamp-obsolete="20240710182434" checksum="006af7b4c40273281db72725f36583ea88f62700" filename="jars/mobie-viewer-fiji-5.1.8.jar"/>
+        <previous-version timestamp="20240710182434" timestamp-obsolete="20240710201917" checksum="325073eaf8c384d2ae06c149c897fea0633bb13c" filename="jars/mobie-viewer-fiji-5.2.1.jar"/>
+        <previous-version timestamp="20240710201917" timestamp-obsolete="20240718105301" checksum="d82857d807a66f47e07f39930446cc56c72d41a1" filename="jars/mobie-viewer-fiji-5.2.2.jar"/>
+        <previous-version timestamp="20240718105301" timestamp-obsolete="20240718110204" checksum="61fd3d137e114f10906188aed8ecf5b2d609b5d7" filename="jars/mobie-viewer-fiji-5.3.0.jar"/>
+        <previous-version timestamp="20240718110204" timestamp-obsolete="20240722133244" checksum="6137a5d878b3b7bff3b56d2916d5fec19c4fe712" filename="jars/mobie-viewer-fiji-5.3.1.jar"/>
+        <previous-version timestamp="20240722133244" timestamp-obsolete="20240723144240" checksum="de1704fc66ec927ef85ef01e607daecc615b1415" filename="jars/mobie-viewer-fiji-5.3.2.jar"/>
+        <previous-version timestamp="20240723144240" timestamp-obsolete="20240725142319" checksum="35f558a1e4433b13be066d8ee249d14340d9e7e5" filename="jars/mobie-viewer-fiji-5.3.3.jar"/>
+        <previous-version timestamp="20240725142319" timestamp-obsolete="20240730163650" checksum="ca45100cb034bbad95be202f4ab2cba0d9b33470" filename="jars/mobie-viewer-fiji-5.3.4.jar"/>
+        <previous-version timestamp="20240730163650" timestamp-obsolete="20240801163033" checksum="06439bf67c6c5a8df9d32667b8e9e8bda4cb1667" filename="jars/mobie-viewer-fiji-5.3.5.jar"/>
+        <previous-version timestamp="20240801163033" timestamp-obsolete="20240809120532" checksum="ed8a517e811dcb6f6eddb47c612ec548a2b6e02d" filename="jars/mobie-viewer-fiji-5.3.6.jar"/>
+        <previous-version timestamp="20240809120532" timestamp-obsolete="20240914125203" checksum="6f77be39aa0f5bd05e8b68a4ade943b40cf1e612" filename="jars/mobie-viewer-fiji-5.3.7.jar"/>
+        <previous-version timestamp="20240914125203" timestamp-obsolete="20240919145710" checksum="01fe2b7af5bd20890902af0f3009bbbc3cd7568e" filename="jars/mobie-viewer-fiji-5.3.8.jar"/>
+        <previous-version timestamp="20240919145710" timestamp-obsolete="20241008104650" checksum="b11f840df639bf1a2d9c3fe60424a33a48688656" filename="jars/mobie-viewer-fiji-5.3.9.jar"/>
+        <previous-version timestamp="20241008104650" timestamp-obsolete="20241010181549" checksum="52ec5a612235633470c9925a740ca170043bb71e" filename="jars/mobie-viewer-fiji-5.4.0.jar"/>
+        <previous-version timestamp="20241010181549" timestamp-obsolete="20241012085213" checksum="543f3f1afc2dbb98d874705b4e7b6c595178bd2d" filename="jars/mobie-viewer-fiji-5.4.1.jar"/>
+        <previous-version timestamp="20241012085213" timestamp-obsolete="20241012100320" checksum="fca62851a31c98cb92ee9c4a22396987a3c947aa" filename="jars/mobie-viewer-fiji-5.4.2.jar"/>
+        <previous-version timestamp="20241012100319" timestamp-obsolete="20241014090134" checksum="cbb120d9da0a87021b57f31def2707555345196d" filename="jars/mobie-viewer-fiji-5.4.3.jar"/>
+        <previous-version timestamp="20241014090132" timestamp-obsolete="20241018152143" checksum="33e3e3d60eaa2a910db32461c0f1fcd2d272d4bb" filename="jars/mobie-viewer-fiji-5.4.4.jar"/>
+        <previous-version timestamp="20241018152143" timestamp-obsolete="20241024160835" checksum="4ea7d4cb11707720d4299f8d3ef1d8b40a0e4885" filename="jars/mobie-viewer-fiji-5.5.0.jar"/>
+        <previous-version timestamp="20241024160835" timestamp-obsolete="20241030094012" checksum="f60f76a7eec405051ee9fbe7602a02a1fecf95af" filename="jars/mobie-viewer-fiji-5.5.1.jar"/>
+        <previous-version timestamp="20241030094012" timestamp-obsolete="20241030101201" checksum="8fa2de07e6f4b5f8e9323ed0a048f36b0c02a936" filename="jars/mobie-viewer-fiji-5.5.3.jar"/>
+        <previous-version timestamp="20241030101201" timestamp-obsolete="20241114174343" checksum="82d2f53c704a68c1bd268e2f0adf2ac99a605b11" filename="jars/mobie-viewer-fiji-5.5.4.jar"/>
+        <previous-version timestamp="20241114174342" timestamp-obsolete="20241126144544" checksum="1c62b36fc78492fe7cbf45282a6811c05c4e8668" filename="jars/mobie-viewer-fiji-5.5.6.jar"/>
+        <previous-version timestamp="20241126144543" timestamp-obsolete="20241212174057" checksum="241b1b9cfee92dd5b2fbeadc7072ca28362525bd" filename="jars/mobie-viewer-fiji-5.5.7.jar"/>
+        <previous-version timestamp="20241212174057" timestamp-obsolete="20241216105937" checksum="66816a7827755387ca1c9594989abce4e041be2a" filename="jars/mobie-viewer-fiji-5.5.8.jar"/>
+        <previous-version timestamp="20241216105937" timestamp-obsolete="20241217094121" checksum="bbdd86eace943d61b60000dac20cbe5112a54b16" filename="jars/mobie-viewer-fiji-5.5.9.jar"/>
+        <previous-version timestamp="20241217094121" timestamp-obsolete="20250109142719" checksum="cc335dd91eab2fd56a5ed5cbdea24678ba27676a" filename="jars/mobie-viewer-fiji-5.6.0.jar"/>
+        <previous-version timestamp="20250109142719" timestamp-obsolete="20250109202027" checksum="60a0877ba0f16d307e2c9ba33da72ce5c1fd305b" filename="jars/mobie-viewer-fiji-5.6.2.jar"/>
+        <previous-version timestamp="20250109202027" timestamp-obsolete="20250124172633" checksum="ea5a33c8b9ed1a14a7b710bcbec4173b3ea2c650" filename="jars/mobie-viewer-fiji-5.6.4.jar"/>
+        <previous-version timestamp="20250124172633" timestamp-obsolete="20250203115715" checksum="60061bdea483aba1e15e051cdf61adf7fbd4af6b" filename="jars/mobie-viewer-fiji-6.0.0.jar"/>
+        <previous-version timestamp="20250203115715" timestamp-obsolete="20250207144032" checksum="8f4ffcfb6f7fff888e5ae8aa8b9fc49038a83879" filename="jars/mobie-viewer-fiji-6.0.1.jar"/>
+        <previous-version timestamp="20250207144032" timestamp-obsolete="20250209172258" checksum="0cf55eda60bc5f12106088a8e9c0ad891c835b82" filename="jars/mobie-viewer-fiji-6.0.2.jar"/>
+        <previous-version timestamp="20250209172257" timestamp-obsolete="20250211093320" checksum="4ccb60a6902df98db4c9818395d6a9de939e4ef4" filename="jars/mobie-viewer-fiji-6.0.3.jar"/>
+        <previous-version timestamp="20250211093320" timestamp-obsolete="20250217102553" checksum="be235506066695a797a36eca1f0f4b730db2826d" filename="jars/mobie-viewer-fiji-6.0.4.jar"/>
+        <previous-version timestamp="20250217102553" timestamp-obsolete="20250218140318" checksum="48047e96239ffed6a46d992e6beb40a72dae035c" filename="jars/mobie-viewer-fiji-6.0.4.jar"/>
+        <previous-version timestamp="20250218140318" timestamp-obsolete="20250219095111" checksum="71a87c9f3b7dc15a9cc43e397cd72ead327c1c43" filename="jars/mobie-viewer-fiji-6.0.5.jar"/>
+        <previous-version timestamp="20250219095111" timestamp-obsolete="20250226132047" checksum="09496bc8b98509eb287e9c0ade7989234e0af708" filename="jars/mobie-viewer-fiji-6.0.6.jar"/>
+        <previous-version timestamp="20250226132047" timestamp-obsolete="20250227105801" checksum="9f0a7af751715149449d01d7f9fe08925b491a6f" filename="jars/mobie-viewer-fiji-6.1.0.jar"/>
+        <previous-version timestamp="20250227105801" timestamp-obsolete="20250227150938" checksum="05e7058bf4fb8b2108b9e65c323660cc27a88e73" filename="jars/mobie-viewer-fiji-6.1.1.jar"/>
+        <previous-version timestamp="20250227150937" timestamp-obsolete="20250312162047" checksum="f7c9971c2490b49b49087dd18bb529402ad6a073" filename="jars/mobie-viewer-fiji-6.1.2.jar"/>
+        <previous-version timestamp="20250312162047" timestamp-obsolete="20250313151037" checksum="183b71d4728ecb191d863ab8af6295cbfa97ffa4" filename="jars/mobie-viewer-fiji-6.1.3.jar"/>
+        <previous-version timestamp="20250313151037" timestamp-obsolete="20250313155254" checksum="849bafd57ce410b13f6562e050a69b00b2ab22a0" filename="jars/mobie-viewer-fiji-6.1.4.jar"/>
+        <previous-version timestamp="20250313155254" timestamp-obsolete="20250320141129" checksum="31619a0a2bc40dd9682b2c50e15274b4624fe2de" filename="jars/mobie-viewer-fiji-6.1.5.jar"/>
+        <previous-version timestamp="20250320141129" timestamp-obsolete="20250411191559" checksum="80e5a4ea4d7d1935a050a34f940b65b100a643f2" filename="jars/mobie-viewer-fiji-6.2.0.jar"/>
+        <previous-version timestamp="20250411191558" timestamp-obsolete="20250415142425" checksum="e47ffdc7a7e91a54a520242328c6ec25afa29c44" filename="jars/mobie-viewer-fiji-6.3.0.jar"/>
+        <previous-version timestamp="20250415142424" timestamp-obsolete="20250415181554" checksum="46a111c899b10088030a3ec2a5e833dea9f44454" filename="jars/mobie-viewer-fiji-6.3.1.jar"/>
+        <previous-version timestamp="20250415181554" timestamp-obsolete="20250416130151" checksum="5ac085951a435eb341c75ce1865094e07d5afc49" filename="jars/mobie-viewer-fiji-6.3.2.jar"/>
+        <previous-version timestamp="20250416130151" timestamp-obsolete="20250416172759" checksum="b63772ca14d8653b30b773b66a5b439dd52246b9" filename="jars/mobie-viewer-fiji-6.3.3.jar"/>
+        <previous-version timestamp="20250416172759" timestamp-obsolete="20250513115626" checksum="ee7950c998e636a1e6513d9c203d15fc9b8cceab" filename="jars/mobie-viewer-fiji-6.3.4.jar"/>
+        <previous-version timestamp="20250513115625" timestamp-obsolete="20250514150744" checksum="e0a36c16e25f07bd1c4f7b3b2477ca3a7b54597e" filename="jars/mobie-viewer-fiji-6.3.5.jar"/>
+        <previous-version timestamp="20250514150744" timestamp-obsolete="20250602095104" checksum="699d74215cd9178ea4cd1d3520675cce07420526" filename="jars/mobie-viewer-fiji-6.3.6.jar"/>
+        <previous-version timestamp="20250602095104" timestamp-obsolete="20250606103547" checksum="61de6d23d1a948e0926b0585d751cf0affab51df" filename="jars/mobie-viewer-fiji-6.3.7.jar"/>
+        <previous-version timestamp="20250606103547" timestamp-obsolete="20250804164857" checksum="8557a5c3c1d2e3d04422c150325fb72e3c2e2716" filename="jars/mobie-viewer-fiji-6.3.8-SNAPSHOT.jar"/>
+    </plugin>
+    <plugin filename="jars/mobie-io-4.0.5.jar">
+        <version checksum="a4e7f4dbe8e5b06e85f3f14562d6508d0bd5a66d" timestamp="20250606103547" filesize="598921">
+            <description>Readers and writers for image data in MoBIE projects</description>
+            <dependency filename="jars/ij.jar" timestamp="20210927120857"/>
+            <dependency filename="jars/spim_data.jar" timestamp="20210913093606"/>
+            <dependency filename="jars/jdom2.jar" timestamp="20210420104746"/>
+            <dependency filename="jars/slf4j-api.jar" timestamp="20210420104812"/>
+            <dependency filename="jars/bigdataviewer-vistools.jar" timestamp="20210927120900"/>
+            <dependency filename="jars/imglib2-realtransform.jar" timestamp="20210420104543"/>
+            <dependency filename="jars/bigdataviewer-core.jar" timestamp="20210927120859"/>
+            <dependency filename="jars/imglib2-cache.jar" timestamp="20210420124839"/>
+            <dependency filename="jars/n5.jar" timestamp="20211112133628"/>
+            <dependency filename="jars/n5-aws-s3.jar" timestamp="20210927120847"/>
+            <dependency filename="jars/trove4j.jar" timestamp="20210420104558"/>
+            <dependency filename="jars/n5-imglib2.jar" timestamp="20211112133627"/>
+            <dependency filename="plugins/bigdataviewer_fiji.jar" timestamp="20210312121753"/>
+            <dependency filename="jars/scijava-optional.jar" timestamp="20210420104546"/>
+            <dependency filename="jars/imglib2-ij.jar" timestamp="20210420104543"/>
+            <dependency filename="jars/gson.jar" timestamp="20210420104746"/>
+            <dependency filename="jars/n5-zarr.jar" timestamp="20210927120851"/>
+            <dependency filename="jars/aws-java-sdk-s3.jar" timestamp="20210420124842"/>
+            <dependency filename="jars/aws-java-sdk-core.jar" timestamp="20210420124836"/>
+            <dependency filename="jars/jackson-annotations.jar" timestamp="20210927120903"/>
+            <dependency filename="jars/udunits.jar" timestamp="20200312194249"/>
+            <dependency filename="jars/jackson-core.jar" timestamp="20210927120904"/>
+            <dependency filename="jars/jackson-databind.jar" timestamp="20210927120904"/>
+            <dependency filename="jars/commons-io.jar" timestamp="20210420104549"/>
+            <dependency filename="jars/guava.jar" timestamp="20220923150057"/>
+            <dependency filename="jars/bigdataviewer-image-loaders.jar" timestamp="20230711105747"/>
+            <dependency filename="jars/commons-compress.jar" timestamp="20230810165842"/>
+            <dependency filename="jars/lz4-java.jar" timestamp="20230807161759"/>
+            <dependency filename="jars/jblosc.jar" timestamp="20230807161802"/>
+            <dependency filename="jars/jackson-jq.jar" timestamp="20230807161722"/>
+            <dependency filename="jars/imglib2-label-multisets.jar" timestamp="20230810165833"/>
+            <dependency filename="jars/jhdf5.jar" timestamp="20230807161652"/>
+            <dependency filename="jars/base.jar" timestamp="20230807161758"/>
+            <dependency filename="jars/bio-formats/ome-common.jar" timestamp="20231218180747"/>
+            <dependency filename="plugins/bio-formats_plugins.jar" timestamp="20231218180746"/>
+            <dependency filename="jars/n5-ij.jar" timestamp="20240607115813"/>
+            <dependency filename="jars/n5-universe.jar" timestamp="20240607115817"/>
+            <dependency filename="jars/bigdataviewer-spimdata-extras.jar" timestamp="20230811161344"/>
+            <dependency filename="jars/imglib2.jar" timestamp="20241018164059"/>
+            <dependency filename="jars/bio-formats/ome-xml.jar" timestamp="20250207143949"/>
+            <author>Christian Tischer</author>
+            <author>Ekaterina Moreva</author>
+        </version>
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20220314154339" checksum="cc0d22e5693a75cac5659f583233580310d1f174" filename="jars/mobie-io-1.2.8.jar"/>
+        <previous-version timestamp="20220314154339" timestamp-obsolete="20220405132105" checksum="ba5a0a3f0817fb30dc6eacdd721776bf2a272064" filename="jars/mobie-io-1.2.8.jar"/>
+        <previous-version timestamp="20220405132121" timestamp-obsolete="20220525164640" checksum="e6b837a74cc984bc4610363965effcfc6ae3aae1" filename="jars/mobie-io-1.2.9.jar"/>
+        <previous-version timestamp="20220525164640" timestamp-obsolete="20220923150814" checksum="240caa2eb7e23cacaab2acd7707eb4f9e4f96a65" filename="jars/mobie-io-1.2.11.jar"/>
+        <previous-version timestamp="20220923150814" timestamp-obsolete="20220927132817" checksum="d8617c9b1c07227dd710f7f523d3e0ba1d90a3b0" filename="jars/mobie-io-1.2.14.jar"/>
+        <previous-version timestamp="20220927132816" timestamp-obsolete="20221109160235" checksum="c32c21c389df21ddf96245a56dc4cc5e73391da2" filename="jars/mobie-io-2.0.7.jar"/>
+        <previous-version timestamp="20221109160237" timestamp-obsolete="20230111094158" checksum="57296e0cbb07d8214370b7e64a0654baf2c55271" filename="jars/mobie-io-2.0.8-SNAPSHOT.jar"/>
+        <previous-version timestamp="20230111094159" timestamp-obsolete="20230216193551" checksum="de4bbef201db0fa00c3d0339f388b80372b68007" filename="jars/mobie-io-2.0.9.jar"/>
+        <previous-version timestamp="20230216193551" timestamp-obsolete="20230505140922" checksum="f23523881acaa3d3041893fc49dcf8089f663213" filename="jars/mobie-io-2.1.0.jar"/>
+        <previous-version timestamp="20230505140922" timestamp-obsolete="20230711111026" checksum="3c1071aa3e1bbb4459545c999f8081795e031eb6" filename="jars/mobie-io-2.1.2.jar"/>
+        <previous-version timestamp="20230711111026" timestamp-obsolete="20230922102231" checksum="7bc062f64397e54f4940690724eed8739188a2e0" filename="jars/mobie-io-2.1.3-SNAPSHOT.jar"/>
+        <previous-version timestamp="20230922102231" timestamp-obsolete="20231130130639" checksum="f8cf50a3d0c61cd9633c1a9a176ddd733ea9c607" filename="jars/mobie-io-2.2.1.jar"/>
+        <previous-version timestamp="20231130130639" timestamp-obsolete="20231218180836" checksum="b1dbf7d2a2bf7a0300cb90a0ce403a45454d1a66" filename="jars/mobie-io-2.2.2.jar"/>
+        <previous-version timestamp="20231218180836" timestamp-obsolete="20240315163757" checksum="e075c8e2fcac7da12a78d70a0de3504e0c47b918" filename="jars/mobie-io-2.2.3.jar"/>
+        <previous-version timestamp="20240315163756" timestamp-obsolete="20240315171559" checksum="1e1ff5e5ac48a6aa2da787ec96e9ff818dc2859f" filename="jars/mobie-io-2.2.5.jar"/>
+        <previous-version timestamp="20240315171559" timestamp-obsolete="20240607120434" checksum="88a42b7bf3cd64de2f25c61aac12b932e06c9a29" filename="jars/mobie-io-2.2.6.jar"/>
+        <previous-version timestamp="20240607120434" timestamp-obsolete="20240710201917" checksum="cf2959c18d46f5758eebd5637d734e305c31ec71" filename="jars/mobie-io-3.0.1.jar"/>
+        <previous-version timestamp="20240710201917" timestamp-obsolete="20240718105301" checksum="77639e573f74758d8e09299d15d490a6330f8eab" filename="jars/mobie-io-3.0.2.jar"/>
+        <previous-version timestamp="20240718105301" timestamp-obsolete="20240725142319" checksum="5e77f93172e00a1fc27bd29bb287f0cfa0bddee0" filename="jars/mobie-io-3.0.3.jar"/>
+        <previous-version timestamp="20240725142319" timestamp-obsolete="20241114174343" checksum="e360d26b6de8d7fd36e4fbb12010dd9bcb8192a1" filename="jars/mobie-io-3.0.4.jar"/>
+        <previous-version timestamp="20241114174342" timestamp-obsolete="20250109202027" checksum="b2892efbb89643e1e2284da6d912f299569b3526" filename="jars/mobie-io-3.1.0.jar"/>
+        <previous-version timestamp="20250109202027" timestamp-obsolete="20250124172633" checksum="59d67dc6d9471cd16026fca11ad6e8a5c6e212a0" filename="jars/mobie-io-3.1.1.jar"/>
+        <previous-version timestamp="20250124172633" timestamp-obsolete="20250415142425" checksum="01e491d7c1b5f210b36eb593964c2b5b81f74264" filename="jars/mobie-io-4.0.1.jar"/>
+        <previous-version timestamp="20250415142424" timestamp-obsolete="20250606103547" checksum="203086b91454b84d5f40e4f875c09d32c51c9a33" filename="jars/mobie-io-4.0.3.jar"/>
+    </plugin>
+    <plugin filename="jars/bigdataviewer-playground-0.11.1.jar">
+        <version checksum="f70b62b8740c158d6377f894334ca65d6b5b8e96" timestamp="20250606103547" filesize="509840">
+            <description>BigDataViewer Actions and GUI</description>
+            <dependency filename="jars/gson.jar" timestamp="20210420104746"/>
+            <dependency filename="jars/imglib2-realtransform.jar" timestamp="20210420104543"/>
+            <dependency filename="jars/slf4j-api.jar" timestamp="20210420104812"/>
+            <dependency filename="jars/scijava-common.jar" timestamp="20210927120858"/>
+            <dependency filename="jars/jitk-tps.jar" timestamp="20210420104544"/>
+            <dependency filename="jars/imglib2.jar" timestamp="20210927120857"/>
+            <dependency filename="jars/bigdataviewer-core.jar" timestamp="20210927120859"/>
+            <dependency filename="jars/bigdataviewer-vistools.jar" timestamp="20210927120900"/>
+            <dependency filename="jars/spim_data.jar" timestamp="20210913093606"/>
+            <dependency filename="jars/imglib2-algorithm.jar" timestamp="20210927120857"/>
+            <dependency filename="jars/imglib2-cache.jar" timestamp="20210420124839"/>
+            <dependency filename="jars/scijava-listeners.jar" timestamp="20210420104749"/>
+            <dependency filename="jars/opencsv.jar" timestamp="20210420124832"/>
+            <dependency filename="jars/ui-behaviour.jar" timestamp="20210420104746"/>
+            <dependency filename="jars/commons-io.jar" timestamp="20210420104549"/>
+            <dependency filename="jars/bigvolumeviewer.jar" timestamp="20210420124826"/>
+            <dependency filename="jars/bigdataviewer-selector.jar" timestamp="20210420124819"/>
+            <dependency filename="jars/commons-lang.jar" timestamp="20210420104603"/>
+            <dependency filename="jars/ij.jar" timestamp="20210927120857"/>
+            <dependency filename="plugins/bigdataviewer_fiji.jar" timestamp="20210312121753"/>
+            <dependency filename="jars/guava.jar" timestamp="20210420104609"/>
+            <dependency filename="jars/ij1-patcher.jar" timestamp="20210927120845"/>
+            <dependency filename="jars/imagej-common.jar" timestamp="20210927120845"/>
+            <dependency filename="jars/scijava-ui-swing.jar" timestamp="20210927120853"/>
+            <dependency filename="jars/caffeine.jar" timestamp="20210420104747"/>
+            <dependency filename="plugins/bigwarp_fiji.jar" timestamp="20250115125248"/>
+            <author>Robert Haase</author>
+            <author>Nicolas Chiaruttini</author>
+            <author>Christian Tischer</author>
+        </version>
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20220314154339" checksum="596ba27917c09895d9e9116a4283e06511a49859" filename="jars/bigdataviewer-playground-0.3.13.jar"/>
+        <previous-version timestamp="20220314154339" timestamp-obsolete="20220525164640" checksum="69214d91fe84d98da12f9a7ef80c53d52bfc6b8f" filename="jars/bigdataviewer-playground-0.4.1.jar"/>
+        <previous-version timestamp="20220525164640" timestamp-obsolete="20220927132817" checksum="3c8df4d61cf0e4b04e42d9ccf3223c3ec0a9d39c" filename="jars/bigdataviewer-playground-0.4.5.jar"/>
+        <previous-version timestamp="20220927132816" timestamp-obsolete="20230922102231" checksum="b4716f07a28606fdadd04897795c57c872213f16" filename="jars/bigdataviewer-playground-0.6.0.jar"/>
+        <previous-version timestamp="20230922102231" timestamp-obsolete="20240607120434" checksum="8d0db806936b076ff931d7b42e9fce7083aaee54" filename="jars/bigdataviewer-playground-0.8.0.jar"/>
+        <previous-version timestamp="20240607120434" timestamp-obsolete="20250124172633" checksum="32cacb4ce10c0eef26f83021ff350ba1bb659049" filename="jars/bigdataviewer-playground-0.9.0.jar"/>
+        <previous-version timestamp="20250124172633" timestamp-obsolete="20250606103547" checksum="420c7d3be19fef44803a520228dba5ffc5726d57" filename="jars/bigdataviewer-playground-0.11.0.jar"/>
+    </plugin>
+    <plugin filename="jars/mastodon-collection-1.0.0-beta-22.jar">
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20230922102630" checksum="9b051cf60582aa3dd7f195fce613c3c1795b80b7" filename="jars/mastodon-collection-1.0.0-beta-22.jar"/>
+    </plugin>
+    <plugin filename="jars/bigdataviewer-selector-0.2.8.jar">
+        <version checksum="4596acf45e1b8b36df2cf53689b2b662a5dedc91" timestamp="20250606103547" filesize="28870">
+            <description>Selector Behaviours for BigDataViewer</description>
+            <dependency filename="jars/bigdataviewer-vistools.jar" timestamp="20210927120900"/>
+            <dependency filename="jars/bigdataviewer-core.jar" timestamp="20210927120859"/>
+            <dependency filename="jars/imglib2.jar" timestamp="20210927120857"/>
+            <dependency filename="jars/imglib2-realtransform.jar" timestamp="20210420104543"/>
+            <dependency filename="jars/ui-behaviour.jar" timestamp="20210420104746"/>
+            <dependency filename="jars/scijava-listeners.jar" timestamp="20210420104749"/>
+            <author>Olivier Burri</author>
+            <author>Nicolas Chiaruttini</author>
+            <author>Romain Guiet</author>
+        </version>
+        <previous-version timestamp="20211112135001" timestamp-obsolete="20220927132817" checksum="ca37eed0dcaa2204dfc192fb71ec274727a4fec1" filename="jars/bigdataviewer-selector-0.1.8.jar"/>
+        <previous-version timestamp="20220927132816" timestamp-obsolete="20230922102231" checksum="8a0e74e200f70980a6873f3999c1e9158d8176bc" filename="jars/bigdataviewer-selector-0.2.1.jar"/>
+        <previous-version timestamp="20230922102231" timestamp-obsolete="20240607120434" checksum="f5e03354601022fa7b70921b631f3e0f73bdbaba" filename="jars/bigdataviewer-selector-0.2.3.jar"/>
+        <previous-version timestamp="20240607120434" timestamp-obsolete="20250124172633" checksum="6c4bafb431a567672cabc9ca6dd97a24c986dcd4" filename="jars/bigdataviewer-selector-0.2.4.jar"/>
+        <previous-version timestamp="20250124172633" timestamp-obsolete="20250606103547" checksum="f5210116f5741f8eac7c98db9e2cb0877264219c" filename="jars/bigdataviewer-selector-0.2.7.jar"/>
+    </plugin>
+    <plugin filename="jars/univocity-parsers-2.8.4.jar">
+        <version checksum="72788d42806850ba91747cbb2a7dae8cc41e2a84" timestamp="20221109160237" filesize="443530">
+            <description>univocity's open source parsers for processing different text formats using a consistent API</description>
+            <author>Jeronimo Backes</author>
+            <author>univocity parser development team</author>
+        </version>
+    </plugin>
+    <plugin filename="jars/shims-0.9.25.jar">
+        <version checksum="3b61ff6bba46a3173dcad1e9af3eaca0937f0ac9" timestamp="20221109160237" filesize="2543"/>
+    </plugin>
+    <plugin filename="jars/fastutil-8.3.0.jar">
+        <version checksum="5e3456906c0d3512a8fd58bbf2c7b43061cfb5fd" timestamp="20221109160237" filesize="18853188"/>
+    </plugin>
+    <plugin filename="jars/tablesaw-core-0.43.1.jar">
+        <version checksum="74862ae8b32460dadf880240576f0fcbe297baf8" timestamp="20221109160237" filesize="634968">
+            <dependency filename="jars/guava.jar" timestamp="20220902131514"/>
+            <dependency filename="jars/commons-math3.jar" timestamp="20210420104603"/>
+            <dependency filename="jars/slf4j-api.jar" timestamp="20220518115001"/>
+            <dependency filename="jars/univocity-parsers.jar" timestamp="20220702202919"/>
+            <dependency filename="jars/fastutil.jar" timestamp="20220702202939"/>
+            <dependency filename="jars/RoaringBitmap.jar" timestamp="20220702202919"/>
+            <dependency filename="jars/classgraph.jar" timestamp="20220702202921"/>
+            <dependency filename="jars/icu4j.jar" timestamp="20220702202941"/>
+        </version>
+    </plugin>
+    <plugin filename="jars/RoaringBitmap-0.9.25.jar">
+        <version checksum="8b279af304d99a4655ef1c65b803edcd61877e40" timestamp="20221109160237" filesize="428511">
+            <dependency filename="jars/shims.jar" timestamp="20220702202917"/>
+        </version>
+    </plugin>
+    <plugin filename="jars/bigdataviewer-image-loaders-0.10.0.jar">
+        <version checksum="996136a1114ed791c267f89807c1d2418f114001" timestamp="20250606103547" filesize="333335">
+            <description>Various image loaders for bigdataviewer (Bio-Formats, Omero, QuPath)</description>
+            <dependency filename="jars/imglib2.jar" timestamp="20210927120857"/>
+            <dependency filename="jars/bio-formats/formats-api.jar" timestamp="20230216193420"/>
+            <dependency filename="jars/bigdataviewer-core.jar" timestamp="20220902131607"/>
+            <dependency filename="jars/spim_data.jar" timestamp="20220801141646"/>
+            <dependency filename="jars/bio-formats/ome-xml.jar" timestamp="20230216193426"/>
+            <dependency filename="jars/slf4j-api.jar" timestamp="20220518115001"/>
+            <dependency filename="jars/commons-lang3.jar" timestamp="20210927120908"/>
+            <dependency filename="jars/imglib2-realtransform.jar" timestamp="20220518114952"/>
+            <dependency filename="jars/bio-formats/formats-bsd.jar" timestamp="20230216193422"/>
+            <dependency filename="jars/commons-lang.jar" timestamp="20210420104603"/>
+            <dependency filename="jars/imglib2-cache.jar" timestamp="20210420124839"/>
+            <dependency filename="jars/scijava-common.jar" timestamp="20230216193418"/>
+            <dependency filename="jars/bigdataviewer-vistools.jar" timestamp="20220927134008"/>
+            <dependency filename="jars/commons-io.jar" timestamp="20210420104549"/>
+            <dependency filename="jars/gson.jar" timestamp="20220902131452"/>
+            <dependency filename="jars/bigdataviewer-spimdata-extras.jar" timestamp="20220923164550"/>
+            <dependency filename="jars/jdom2.jar" timestamp="20210420104746"/>
+            <dependency filename="jars/imagej-common.jar" timestamp="20221109151612"/>
+            <dependency filename="jars/scijava-optional.jar" timestamp="20220518114944"/>
+            <dependency filename="jars/ij.jar" timestamp="20220902131517"/>
+            <dependency filename="jars/imglib2-algorithm.jar" timestamp="20220209120241"/>
+            <dependency filename="jars/imglib2-ij.jar" timestamp="20220923153415"/>
+            <author>Nicolas Chiaruttini</author>
+            <author>Claire Stoffel</author>
+            <author>Rémy Dornier</author>
+        </version>
+        <previous-version timestamp="20230216193551" timestamp-obsolete="20230505140922" checksum="ddd60856eb5c89d75d32deeb565fe3a3f0111653" filename="jars/bigdataviewer-image-loaders-0.4.4.jar"/>
+        <previous-version timestamp="20230505140922" timestamp-obsolete="20230922102231" checksum="5db4ebd250626e221cca79eed86a27911de2dfe0" filename="jars/bigdataviewer-image-loaders-0.4.6.jar"/>
+        <previous-version timestamp="20230922102231" timestamp-obsolete="20250124172633" checksum="318553696814cd5ec5a33fbdb7795e71931fa92b" filename="jars/bigdataviewer-image-loaders-0.6.0.jar"/>
+        <previous-version timestamp="20250124172633" timestamp-obsolete="20250606103547" checksum="7c09d3680ee59bdf7175b87e17f02ff22996f157" filename="jars/bigdataviewer-image-loaders-0.9.0.jar"/>
+    </plugin>
+    <plugin filename="jars/bigdataviewer-spimdata-extras-0.4.0.jar">
+        <version checksum="e8bdc922d868ff31405dcedc8087253f0258af8b" timestamp="20230922102231" filesize="9429">
+            <description>Repo containing extra settings that can be stored in spimdata file format</description>
+            <dependency filename="jars/spim_data.jar" timestamp="20220801141646"/>
+            <dependency filename="jars/imglib2-realtransform.jar" timestamp="20220518114952"/>
+            <dependency filename="jars/imglib2.jar" timestamp="20210927120857"/>
+            <dependency filename="jars/jdom2.jar" timestamp="20210420104746"/>
+            <dependency filename="jars/bigdataviewer-core.jar" timestamp="20220902131607"/>
+            <author>Nicolas Chiaruttini</author>
+        </version>
+        <previous-version timestamp="20230216193551" timestamp-obsolete="20230922102231" checksum="31b71597649205d2f67eae95554c06b089dd26b4" filename="jars/bigdataviewer-spimdata-extras-0.3.1.jar"/>
+    </plugin>
+    <plugin filename="jars/jide-oss-3.7.15.jar">
+        <version checksum="9293c1da2ab0ee19dae0865c039bf6ee4fbf4c26" timestamp="20241217094121" filesize="2138932"/>
+    </plugin>
+    <plugin filename="jars/bvv-playground-0.3.4.jar">
+        <version checksum="6c19ea907c71b521176e54690f02edffd0c37ed9" timestamp="20250124172633" filesize="436744">
+            <description>Volume rendering of bdv datasets with gamma and transparency option</description>
+            <dependency filename="jars/bigdataviewer-core.jar" timestamp="20240305181450"/>
+            <dependency filename="jars/imglib2.jar" timestamp="20241217093759"/>
+            <dependency filename="jars/imglib2-realtransform.jar" timestamp="20230810165835"/>
+            <dependency filename="jars/bigdataviewer-vistools.jar" timestamp="20240221160813"/>
+            <dependency filename="jars/spim_data.jar" timestamp="20230807161636"/>
+            <dependency filename="jars/scijava-listeners.jar" timestamp="20230807161642"/>
+            <dependency filename="jars/trove4j.jar" timestamp="20230807161636"/>
+            <dependency filename="jars/flatlaf.jar" timestamp="20240219090534"/>
+            <dependency filename="jars/ij.jar" timestamp="20230810165843"/>
+            <dependency filename="jars/miglayout-swing.jar" timestamp="20230810165835"/>
+            <dependency filename="jars/jide-oss.jar" timestamp="20241125114758"/>
+            <dependency filename="jars/jdom2.jar" timestamp="20230810165834"/>
+            <dependency filename="jars/joml.jar" timestamp="20230811144013"/>
+            <dependency filename="jars/ST4.jar" timestamp="20230811143958"/>
+            <dependency filename="jars/commons-lang.jar" timestamp="20230807161651"/>
+            <dependency filename="jars/jogl-all.jar" timestamp="20230811144007"/>
+            <dependency filename="jars/commons-math3.jar" timestamp="20230807161637"/>
+            <dependency filename="jars/imglib2-cache.jar" timestamp="20230810165833"/>
+            <dependency filename="jars/scijava-common.jar" timestamp="20241217093800"/>
+            <dependency filename="jars/directories-26.jar" timestamp="20230810165837"/>
+            <dependency filename="jars/gluegen-rt.jar" timestamp="20230811143959"/>
+            <author>Tobias Pietzsch</author>
+            <author>Eugene Katrukha</author>
+        </version>
+        <previous-version timestamp="20241217094121" timestamp-obsolete="20250124172633" checksum="dff55bedcae6c575c5cdba3656cd22923e3ff80e" filename="jars/bvv-playground-0.3.3.jar"/>
+    </plugin>
+    <plugin filename="jars/flatlaf-jide-oss-3.0.jar">
+        <version checksum="f00f8c84d397487ad79e447095d3ed8748088c8f" timestamp="20241217094121" filesize="40752">
+            <dependency filename="jars/jide-oss.jar" timestamp="20241125114758"/>
+            <dependency filename="jars/flatlaf.jar" timestamp="20240219090534"/>
+        </version>
+    </plugin>
+    <plugin filename="jars/poi-ooxml-5.3.0.jar">
+        <version checksum="7b164a39fb993a52ff93ab8d379d2b48e37a6c95" timestamp="20250513161157" filesize="2031513">
+            <dependency filename="jars/commons-compress.jar" timestamp="20241018164058"/>
+            <dependency filename="jars/xpp3.jar" timestamp="20230807161743"/>
+            <dependency filename="jars/commons-io.jar" timestamp="20241018164054"/>
+            <dependency filename="jars/bcprov-jdk18on.jar" timestamp="20241018164143"/>
+            <dependency filename="jars/bcprov-jdk15on.jar" timestamp="20230807161709"/>
+            <dependency filename="jars/bcpkix-jdk18on.jar" timestamp="20241018164104"/>
+            <dependency filename="jars/bcpkix-jdk15on.jar" timestamp="20230807161822"/>
+            <dependency filename="jars/bcutil-jdk18on.jar" timestamp="20241018164146"/>
+            <dependency filename="jars/commons-collections4.jar" timestamp="20241018164128"/>
+            <dependency filename="jars/batik-bridge.jar" timestamp="20250124171919"/>
+            <dependency filename="jars/batik-awt-util.jar" timestamp="20250124171918"/>
+            <dependency filename="jars/batik-dom.jar" timestamp="20250124171919"/>
+            <dependency filename="jars/batik-util.jar" timestamp="20250124171923"/>
+            <dependency filename="jars/batik-anim.jar" timestamp="20250124171917"/>
+            <dependency filename="jars/batik-svg-dom.jar" timestamp="20250124171921"/>
+            <dependency filename="jars/batik-gvt.jar" timestamp="20250124171920"/>
+            <dependency filename="jars/batik-css.jar" timestamp="20250124171919"/>
+            <dependency filename="jars/batik-constants.jar" timestamp="20250124171929"/>
+            <dependency filename="jars/batik-svggen.jar" timestamp="20250124171922"/>
+            <dependency filename="jars/batik-parser.jar" timestamp="20250124171920"/>
+            <dependency filename="jars/batik-i18n.jar" timestamp="20250124171929"/>
+        </version>
+    </plugin>
+    <plugin filename="jars/tablesaw-excel-0.43.1.jar">
+        <version checksum="ab4c38348696d8cb69a1ee7381b9ad4fb5b2358c" timestamp="20250513161157" filesize="16663">
+            <dependency filename="jars/tablesaw-core.jar" timestamp="20230807161812"/>
+            <dependency filename="jars/poi-ooxml.jar" timestamp="20250512133805"/>
+            <dependency filename="jars/guava.jar" timestamp="20241018164122"/>
+        </version>
+    </plugin>
+    <plugin filename="jars/poi-5.3.0.jar">
+        <version checksum="8d040cd7ddc11f88131e8cd71ed47f8a5b96c319" timestamp="20250513163804" filesize="2979181">
+            <dependency filename="jars/commons-io.jar" timestamp="20241018164054"/>
+            <dependency filename="jars/commons-collections4.jar" timestamp="20241018164128"/>
+            <dependency filename="jars/commons-codec.jar" timestamp="20241018164104"/>
+            <dependency filename="jars/commons-math3.jar" timestamp="20230807161637"/>
+        </version>
+    </plugin>
+    <plugin filename="jars/xmlbeans-5.2.1.jar">
+        <version checksum="d3cbc9c65c215ee133d79714a77d9a259b2187f5" timestamp="20250513164133" filesize="2202876">
+            <description>XmlBeans main jar</description>
+            <dependency filename="jars/xpp3.jar" timestamp="20230807161743"/>
+            <dependency filename="jars/ant.jar" timestamp="20241018164238"/>
+            <author>POI Team</author>
+        </version>
+    </plugin>
+    <plugin filename="jars/log4j-api-2.20.0.jar">
+        <version checksum="482161f8fb7ccc23cac3a3ac39d70fc3c0f0d7f4" timestamp="20250513164430" filesize="313296">
+            <description>The Apache Log4j API</description>
+        </version>
+    </plugin>
+    <plugin filename="jars/poi-ooxml-lite-5.3.0.jar">
+        <version checksum="02ef33c67d9f0dedfeb4cbf65eafd1da074c471c" timestamp="20250513164649" filesize="5987150">
+            <dependency filename="jars/xmlbeans.jar" timestamp="20240522181131"/>
+            <dependency filename="jars/xpp3.jar" timestamp="20230807161743"/>
+        </version>
+    </plugin>
+</pluginRecords>
