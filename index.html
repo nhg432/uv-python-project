@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMBL 3D Bioimage Visualization Gallery</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .visualization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .viz-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .viz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+        .viz-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+        .viz-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        .viz-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .viz-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+        .main-feature {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.2));
+            border: 2px solid rgba(255, 215, 0, 0.5);
+        }
+        .channel-info {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        .channel-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin: 5px;
+        }
+        .features {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .features h2 {
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧬 EMBL 3D Bioimage Visualization Gallery</h1>
+        <p class="subtitle">Interactive 3D Surface Mesh Renderings of Cellular Structures</p>
+        
+        <div class="visualization-grid">
+            <div class="viz-card main-feature">
+                <div class="viz-title">🌟 Ultra-Massive Scale Surface Mesh (Latest)</div>
+                <div class="channel-info">
+                    <span class="channel-tag">🟡 Centrin (0.09)</span>
+                    <span class="channel-tag">🟣 Tubulin (0.1)</span>
+                    <span class="channel-tag">🔵 DNA (0.005)</span>
+                </div>
+                <div class="viz-description">
+                    Complete cellular architecture with Z-axis flattening for enhanced layer analysis. 
+                    Features optimized thresholds for balanced detail across all three channels with 
+                    custom scale parameters and forced aspect ratio for pancake-like viewing.
+                </div>
+                <a href="embl_visualizations/surface_mesh_massive_scale.html" class="viz-link">View 3D Visualization</a>
+            </div>
+            
+            <div class="viz-card">
+                <div class="viz-title">🎨 Ultra Detail Surface Mesh</div>
+                <div class="viz-description">
+                    High-resolution surface meshes with maximum detail preservation. 
+                    Perfect for examining fine cellular structures and protein distributions.
+                </div>
+                <a href="embl_visualizations/surface_mesh_ultra_detail.html" class="viz-link">Explore</a>
+            </div>
+            
+            <div class="viz-card">
+                <div class="viz-title">🔬 Individual Channel Analysis</div>
+                <div class="viz-description">
+                    Separate visualizations for each cellular component allowing focused 
+                    analysis of centrin, tubulin, and DNA structures.
+                </div>
+                <a href="embl_visualizations/surface_mesh_Centrin_Ch0.html" class="viz-link">View Channels</a>
+            </div>
+            
+            <div class="viz-card">
+                <div class="viz-title">🌈 Multi-Threshold Comparisons</div>
+                <div class="viz-description">
+                    Compare different threshold levels to understand structural detail 
+                    variations and optimize visualization parameters.
+                </div>
+                <a href="embl_visualizations/multi_threshold_Centrin_Ch0.html" class="viz-link">Compare</a>
+            </div>
+            
+            <div class="viz-card">
+                <div class="viz-title">📊 Interactive 3D Plots</div>
+                <div class="viz-description">
+                    Original interactive 3D scatter plots and volume renderings for 
+                    comprehensive cellular structure exploration.
+                </div>
+                <a href="embl_visualizations/interactive_3d_combined_all_channels.html" class="viz-link">Interact</a>
+            </div>
+        </div>
+        
+        <div class="features">
+            <h2>🚀 Visualization Features</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <strong>📐 Z-Axis Flattening</strong><br>
+                    Compressed Z-dimension for enhanced layer analysis and better structural understanding
+                </div>
+                <div class="feature-item">
+                    <strong>🎯 Custom Thresholds</strong><br>
+                    Optimized threshold values for each channel to reveal maximum structural detail
+                </div>
+                <div class="feature-item">
+                    <strong>🎨 Advanced Materials</strong><br>
+                    Sophisticated lighting and material properties for photorealistic rendering
+                </div>
+                <div class="feature-item">
+                    <strong>⚡ Interactive Controls</strong><br>
+                    Full 3D interaction with rotation, zoom, and hover information
+                </div>
+                <div class="feature-item">
+                    <strong>🔬 Scientific Accuracy</strong><br>
+                    Based on real EMBL OME-Zarr bioimage data with proper scaling and normalization
+                </div>
+                <div class="feature-item">
+                    <strong>📱 Responsive Design</strong><br>
+                    Optimized for viewing on desktop, tablet, and mobile devices
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.3);">
+            <p><strong>Dataset:</strong> EMBL bmcc122_pfa_cetn-tub-dna_20231208_cl.ome.zarr</p>
+            <p><strong>Processing:</strong> Python • Plotly • scikit-image • scipy • zarr</p>
+            <p><strong>Repository:</strong> <a href="https://github.com/nhg432/uv-python-project" style="color: #ffd700;">GitHub</a></p>
+        </div>
+    </div>
+</body>
+</html>
